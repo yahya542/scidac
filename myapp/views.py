@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .models import  Jadwal
-from .forms import FormLogin
+from .forms import FormLogin, JadwalForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -71,12 +71,12 @@ def jadwal(request):
 # View untuk membuat jadwal baru
 def buat(request):
     if request.method == 'POST':
-        form = Jadwal(request.POST)
+        form = Jadwal.objects.all(request.POST)
         if form.is_valid():
             form.save()
             return redirect('dashboard')
     else:
-        form = Jadwal()
+        form = JadwalForm()
     return render(request, 'jadwal/buat.html', {'form': form})
 
 # View untuk melihat detail jadwal

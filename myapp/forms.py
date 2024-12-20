@@ -42,7 +42,7 @@ class FormSignUp(forms.Form):
 
 
 #### jadwal
-class Jadwal(forms.ModelForm):
+class JadwalForm(forms.ModelForm):
     class Meta:
         model = Jadwal
         fields = ['nama_pelajaran', 'hari', 'jam_mulai', 'jam_selesai']  # Pastikan field sesuai dengan model

@@ -1,0 +1,3 @@
+create DATABASE myapp
+
+CREATE TABLE 

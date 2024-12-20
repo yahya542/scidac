@@ -1,0 +1,44 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Jadwal</title>
+     <link rel="stylesheet" href="{% static 'css/jadwal.css' %}"> 
+</head>
+<body>
+
+
+<header>
+  <h1>Buat Jadwal Pelajaran</h1>
+</header>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.nama_pelajaran.id_for_label }}">Nama Pelajaran:</label>
+            {{form.nama_pelajaran}}
+        </div>
+        
+        <div>
+            <label for="{{ form.hari.id_for_label }}">Hari:</label>
+            {{ form.hari }}
+        </div>
+        
+        <div>
+            <label for="{{ form.jam_mulai.id_for_label }}">Jam Mulai:</label>
+            {{ form.jam_mulai }}
+        </div>
+
+        <div>
+            <label for="{{ form.jam_selesai.id_for_label }}">Jam Selesai:</label>
+            {{ form.jam_selesai }}
+        </div>
+        <button type="submit">Simpan Jadwal</button>
+    </form>
+   
+
+
+</body>
+</html>

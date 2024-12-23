@@ -1,9 +1,18 @@
-# myapp/urls.py
+
 from django.urls import path
-from . import views
+from myapp.views import  g, a,k
+
 
 urlpatterns = [
-    path('-jadwal', views.jadwal, name='jadwal'),         # Halaman daftar jadwal
-    path('-buat', views.buat, name='buat'),               # Halaman buat jadwal baruh
-    path('-lihat/<int:jadwal_id>', views.lihat, name='lihat'),  # Halaman lihat detail jadwal
+    #Dasar
+    path('-geometri', g, name='geometri'), 
+
+
+    #menengah       
+    path('-aljabar', a, name='aljabar'),
+
+
+    #tinggi
+    path('-kalkulus', k, name='kalkulus')
+
 ]

@@ -1,16 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse 
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from .models import  Jadwal
-from .forms import FormLogin, JadwalForm
+from .forms import FormLogin
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 
 
 
-# Create your views here.
+
+# auth 
 def dashboard(request): 
     return render(request, 'dashboard.html', {'user': request.user})
 def register(request): 
@@ -18,7 +16,27 @@ def register(request):
 def submit_data(request): 
     return render(request, "submit.html")
 def success(request): 
-    return render('aunt_succes.html')
+    return render(request, 'aunt_succes.html')
+def google(request): 
+    return render(request, 'autentikasi/google.html')
+def fb(request): 
+    return render(request, 'autentikasi/facebook.html')
+def forgot(request): 
+    return render(request, "autentikasi/forgot-password.html")
+
+
+#math 
+#dasar
+def g(request): 
+    return render (request, 'math/dasar/geometri.html')
+#menengah
+def a(request): 
+    return render (request, 'math/menengah/aljabar.html')
+#tinggi
+def k(request): 
+    return render (request, 'math/tinggi/kalkulus.html')
+
+
 
 def my_login(request): 
     form = FormLogin()

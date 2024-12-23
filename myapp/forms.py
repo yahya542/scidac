@@ -31,7 +31,7 @@ class FormSignUp(forms.Form):
     # Validasi konfirmasi password
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get('password') #oke
+        password = cleaned_data.get('password') #oke gas
         confirm_password = cleaned_data.get('confirm_password')
 
         if password and confirm_password:

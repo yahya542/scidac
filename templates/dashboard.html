@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/kalkulator.css' %}" rel="stylesheet">
   
 
 </head>
@@ -61,7 +62,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <img src="{% static 'img/school-svgrepo-com.svg'%}" alt="school" >
+                    <img src="{% static 'img/math.svg'%}" alt="school" >
                     <span>Math</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -83,11 +84,8 @@
                 </a>
                 <div id="collapseA" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div style="background-color: gold;" class=" py-2 collapse-inner rounded">
-                        <h6 style="color:red;" class="collapse-header">SD:</h6>
                         <a style="color: navy;" class="collapse-item" href="/jadwal-jadwal">Jadwal Pelajaran</a>
-                        <h6 style="color:red;" class="collapse-header">SMP:</h6>
-                        <a style="color: navy;" class="collapse-item" href="/jadwal-jadwal">Jadwal Pelajaran</a>
-                        <h6 style="color: red;" class="collapse-header">SMA:</h6>
+                        
                     </div>
                 </div>
             </li>
@@ -101,11 +99,8 @@
                 </a>
                 <div id="collapseB" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div style="background-color: gold;" class=" py-2 collapse-inner rounded">
-                        <h6 style="color:red;" class="collapse-header">SD:</h6>
-                        <a style="color: navy;" class="collapse-item" href="/jadwal-jadwal">Jadwal Pelajaran</a>
-                        <h6 style="color:red;" class="collapse-header">SMP:</h6>
-                        <a style="color: navy;" class="collapse-item" href="/jadwal-jadwal">Jadwal Pelajaran</a>
-                        <h6 style="color: red;" class="collapse-header">SMA:</h6>
+                        <a style="color: navy;" class="collapse-item" href="#">TO DO LIST</a>
+                   
                     </div>
                 </div>
             </li>
@@ -255,7 +250,7 @@
                     <!-- Page Heading -->
                     <div style="color:darkcyan;" class="d-sm-flex align-items-center justify-content-between mb-4" >
                         <h1 class="h3 mb-0 text-800">Welcome {{ user.username }} to Science and Daily Activity </h1>
-                        <p id="waktu"></p>
+                        <h4 class="jam" id="waktu"></h4>
 
                     </div>
 
@@ -387,37 +382,36 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Calender</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">Calculator</h6>
+                                    
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
+                                <div class = " grid-container " >
+                                    <div style="background-color: white; height: 360px;" class = " card-body calculator-grid ">
+                                      <textarea style="background-color:black; color: white; overflow: hidden; " type="text" id = "inputtext" placeholder="0">
+
+                                      </textarea>
+                                        <button style="background-color: grey;">C</button>
+                                        <button style="background-color: grey;">DEL</button>
+                                        <button style="background-color: grey;"></button>
+                                        
+                                        <button style="background-color: navy; color:white;">+</button>
+                                        <button style="background-color: gold;">7</button>
+                                        <button style="background-color: gold;">8</button>
+                                        <button style="background-color: gold;">9</button>
+                                        <button style="background-color: navy; color:white;">-</button>
+                                        <button style="background-color: gold;">4</button>
+                                        <button style="background-color: gold;">5</button>
+                                        <button style="background-color: gold;">6</button>
+                                        <button style="background-color: navy; color:white;">*</button>
+                                        <button style="background-color: gold;">1</button>
+                                        <button style="background-color: gold;">2</button>
+                                        <button style="background-color: gold;">3</button>
+                                        <button style="background-color: navy;  color:white;">/</button>
+                                        <button style="background-color: gold;">00</button>
+                                        <button style="background-color: gold;">0</button>
+                                        <button style="background-color: gold;">.</button>
+                                        <button style="background-color: red;">=</button>
                                     </div>
                                 </div>
                             </div>
@@ -433,7 +427,7 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Calculator</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Calender</h6>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="small font-weight-bold">Server Migration <span
@@ -643,6 +637,7 @@
     <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
     <script src="{% static 'js/jam.js' %}"></script>
+    <script src="{% static 'js/calculator.js' %}"></script>
 
 
 

@@ -36,6 +36,9 @@
   padding-left: 35px;
 
 }
+.no-bootsrap {
+  all: unset;
+}
 
 
 

@@ -1,9 +1,26 @@
-.bg-login {
-   /*  background-image: url("{% static 'img/bg.jpg' %}"); */
+/* .bg-login {
+ 
    background-image: url(../img/bg.jpg);
    height: 90%;
    overflow: hidden;
    scrollbar-width: none;
+   z-index: ;
+} */
+
+.bg-login {
+ 
+   background-image: url(../img/bg.jpg);  
+   height: 90%;
+   overflow: hidden;
+   scrollbar-width: none;
+   border-radius: 25%;
+}
+.container {
+   width:100%;
+   padding-right:.75rem;
+   padding-left:.75rem;
+   margin-right:auto;
+   margin-left:auto
 }
 .bg-tp {
    

@@ -23,6 +23,8 @@ def fb(request):
     return render(request, 'autentikasi/facebook.html')
 def forgot(request): 
     return render(request, "autentikasi/forgot-password.html")
+def akun(request): 
+    return render(request, 'autentikasi/akun.html')
 
 
 #math 

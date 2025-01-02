@@ -10,10 +10,11 @@
 .day{ 
     padding: 0.5em;
     font-size: 5;
-    border: 0.5px solid #ccc;
+    border: 0.5px solid slategrey;
     text-align: center;
-    background: gold;
+    background:#ADD8E6 ;
     width: 65;
+    color: black;
 
 }
 .header {
@@ -23,6 +24,7 @@
     text-align: center;
     background-color: teal;
     width: 65;
+    color: black;
 }
 .day, .hr{
     height: 30px;
@@ -31,5 +33,6 @@
     background-color: #f3f3f3;
 }
 .today { 
-    background-color: navy;
+    background-color :#ADD8E6 ;
+    color:white;
 }

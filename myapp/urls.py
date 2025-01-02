@@ -1,11 +1,11 @@
 
 from django.urls import path
-from myapp.views import  g, a,k, dsh
+from myapp.views import  g, a,k, rlg, math, sc, dac, school
 
 
 urlpatterns = [
     ## math ##
-    
+    path('-math', math, name='math' ),
     #Dasar
     path('-geometri', g, name='geometri'), 
     #menengah       
@@ -16,7 +16,22 @@ urlpatterns = [
 
     ## religi ##
     #dashboard 
-    path('-dsh', dsh, name='dsh'),
+    path('-rlg', rlg, name='religi'),
+
+
+    ###science 
+    #dashboard 
+    path('-sc', sc , name='science' ),
+
+    ####dac 
+    #dashboard 
+    path('-dac', dac , name='dac' ),
+
+    ###school
+    #school 
+    path('-school', school, name='school' )
+
+    
 
 ]
 

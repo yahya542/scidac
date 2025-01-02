@@ -32,7 +32,7 @@ function generateCalendar() {
 
     for (let i = 1; i <= lastDay; i++) {
         if (i === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear()) {
-            calendar.innerHTML += `<div class="day today">${i}</div>`;
+            calendar.innerHTML += `<div style=" background-color: slategray;" class="day today">${i}</div>`;
         } else {
             calendar.innerHTML += `<div class="day">${i}</div>`;
         }

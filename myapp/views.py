@@ -5,9 +5,15 @@ from .forms import FormLogin
 from django.contrib.auth.models import User
 
 
+
+#science 
+def sc (request): 
+    return render (request, 'science/science.html')
+
+
 #religi 
-def dsh(request) : 
-    return render (request, 'religi/dsh.html')
+def rlg(request) : 
+    return render (request, 'religi/religi.html')
 
 
 # auth 
@@ -30,6 +36,8 @@ def akun(request):
 
 
 #math 
+def math(request): 
+    return render (request, 'math/math.html')
 #dasar
 def g(request): 
     return render (request, 'math/dasar/geometri.html')
@@ -39,6 +47,15 @@ def a(request):
 #tinggi
 def k(request): 
     return render (request, 'math/tinggi/kalkulus.html')
+
+
+#dac 
+def dac(request): 
+    return render (request, 'dac/dac.html')
+
+#school 
+def school(request): 
+    return render (request, 'school/school.html')
 
 
 #auth

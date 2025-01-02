@@ -22,6 +22,20 @@ urlpatterns = [
     ##religi
     path('religi', include('myapp.urls')),
 
+    ##religi
+    path('science', include('myapp.urls')),
+
+    ##school
+    path('school', include('myapp.urls')),
+
+    ##dac
+    path('dac', include('myapp.urls')),
+
+
+
+
+
+
   
 
 

@@ -5,7 +5,9 @@ from .forms import FormLogin
 from django.contrib.auth.models import User
 
 
-
+#religi 
+def dsh(request) : 
+    return render (request, 'religi/dsh.html')
 
 
 # auth 
@@ -39,7 +41,7 @@ def k(request):
     return render (request, 'math/tinggi/kalkulus.html')
 
 
-
+#auth
 def my_login(request): 
     form = FormLogin()
     if request.method == 'POST':

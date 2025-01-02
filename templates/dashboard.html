@@ -22,6 +22,9 @@
     <link href="{% static 'css/kalender.css' %}" rel="stylesheet">
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/kalkulator.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dark.css' %}" rel="stylesheet">
+
+    
 
 
 </head>
@@ -32,14 +35,14 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: navy;">
+        <ul class="navbar-nav  sidebar sidebar-dark accordion toggled " id="accordionSidebar" style="background-color:#708090;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SCIDAC <sup>App</sup></div>
+               <!--  <div class="sidebar-brand-text mx-3">SCIDAC <sup>App</sup></div> -->
             </a>
 
             <!-- Divider -->
@@ -107,7 +110,7 @@
                 </a>
                 <div id="collapser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div style="background-color: gold;" class=" py-2 collapse-inner rounded">
-                        <a style="color: navy;" class="collapse-item" href="#">Dashboard</a>
+                        <a style="color: navy;" class="collapse-item" href="/religi-dsh">Dashboard</a>
                         <a style="color: navy;" class="collapse-item" href="#">Qur'an</a>
 
 
@@ -186,10 +189,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+           
 
 
         </ul>
@@ -202,18 +202,22 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav style="background-color: gold;"
-                    class=" topbar navbar navbar-expand navbar-orange bg-orange  mb-4 static-top shadow">
-
+                <nav style="background-color: #708090;"
+                    class=" topbar navbar navbar-expand navbar-orange   mb-4 static-top shadow">
+                    
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
+                
+
+
+
                     <!-- Topbar Search -->
-                    <form
+                    <form 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
+                        <div style="margin-left: 600px; width: 300px;" class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -257,23 +261,19 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.username}}</span>
+                                <span style="color: azure;" class="mr-2 d-none d-lg-inline  small">{{user.username}}</span>
                                 <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg'%}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <a class="dropdown-item" href="/akun">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-light-400"></i>
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -292,9 +292,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div style="color:darkcyan;" class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-800">Welcome {{ user.username }} to Science and Daily Activity </h1>
-                        <h4 class="jam" id="waktu"></h4>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        
+                       
+                        <h6 class="h3 mb-0 text-800">Welcome {{ user.username }} to Science and Daily Activity </h6>
+
 
                     </div>
 
@@ -444,14 +446,14 @@
                                 <div style=" height: 360px; width: 700px; line-height: 0.5;" class=" grid-container  ">
 
                                     <div style="color: teal ; margin-top: 20px;" id="monthYear"></div>
-                                    <div style="margin-left: -125px; font-weight: 200;" class="calendar">
-                                        <div class="hr">Minggu</div>
-                                        <div class="hr">Senin</div>
-                                        <div class="hr">Selasa</div>
-                                        <div class="hr">Rabu</div>
-                                        <div class="hr">Kamis</div>
-                                        <div class="hr">Jumat</div>
-                                        <div class="hr">Sabtu</div>
+                                    <div style="margin-left: -200px; font-weight: 200;" class="calendar">
+                                        <div class="header">Minggu</div>
+                                        <div class="header">Senin</div>
+                                        <div class="header">Selasa</div>
+                                        <div class="header">Rabu</div>
+                                        <div class="header">Kamis</div>
+                                        <div class="header">Jumat</div>
+                                        <div class="header">Sabtu</div>
                                     </div>
 
 

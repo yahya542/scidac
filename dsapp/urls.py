@@ -18,6 +18,10 @@ urlpatterns = [
 
     ##math
     path('math', include('myapp.urls')),
+
+    ##religi
+    path('religi', include('myapp.urls')),
+
   
 
 

@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import  g, a,k, rlg, math, sc, dac, school
+from myapp.views import  g, a,k, rlg, math, sc, dac, school, buat
 
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     ####dac 
     #dashboard 
     path('-dac', dac , name='dac' ),
+    path('-buat', buat , name='buat'),
 
     ###school
     #school 

@@ -52,6 +52,8 @@ def k(request):
 #dac 
 def dac(request): 
     return render (request, 'dac/dac.html')
+def buat(request): 
+    return render (request, 'dac/buat_todo.html')
 
 #school 
 def school(request): 

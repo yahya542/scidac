@@ -1,3 +1,14 @@
+<!--     <h1>Tambah To-Do Baru</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Simpan</button>
+    </form>
+
+    <p><a href="/dac-dac">Kembali ke Daftar To-Do</a></p>
+ -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +42,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul style="background-color: slategray;" class="navbar-nav bg-gradient- sidebar sidebar-dark accordion toggled"
+        <ul style="background-color: slateblue;" class="navbar-nav bg-gradient- sidebar sidebar-dark accordion toggled"
             id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
@@ -74,7 +85,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav style="background-color: slategray;"
+                <nav style="background-color:slateblue;"
                     class="navbar navbar-expand navbar bg topbar mb-4 static-top shadow">
 
                     <!--                 <!-- Sidebar Toggle (Topbar) -->
@@ -153,15 +164,15 @@
                 <!-- dasar -->
 
                 <div class=" col-xl-4 col-lg-5">
-                    <div style="width: 400px; " class="card shadow mb-5">
+                    <div style="width: 400px; margin-left: 400px; " class="card shadow mb-5">
                         <div class=" grid-container ">
-                            <div style="text-align: center;"
+                            <div style="text-align: center; align-items: center;"
                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">TO DO LIST</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Buat List Baru </h6>
                             </div>
                             <div style="background-color: white; height: 360px;" class="card-body">
 
-                                
+
 
                                 <table border="1">
                                     <thead>

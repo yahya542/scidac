@@ -31,6 +31,12 @@ urlpatterns = [
     ##dac
     path('dac', include('myapp.urls')),
 
+    #contact
+    path('cu', include('myapp.urls')),
+
+
+
+
 
 
 

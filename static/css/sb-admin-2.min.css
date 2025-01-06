@@ -20,6 +20,7 @@
     --danger: #e74a3b;
     --light: #f8f9fc;
     --dark: #5a5c69;
+    --b1: #79D7BE ; 
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -4231,7 +4232,7 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
-    overflow: auto;
+    
   }
   .card-title {
     margin-bottom: 0.75rem;

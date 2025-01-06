@@ -59,6 +59,11 @@ def buat(request):
 def school(request): 
     return render (request, 'school/school.html')
 
+#contact us 
+def cu (request): 
+    return render (request, 'contact/contact_us.html')
+
+
 
 #auth
 def my_login(request): 

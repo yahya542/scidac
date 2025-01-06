@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Berdasarkan Pilihan</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+        .card:hover {
+            background-color: #f0f0f0;
+        }
+        details {
+            margin-bottom: 10px;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .form-input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="card1" class="card">
+        <h2>Pilih Bentuk</h2>
+
+        <details>
+            <summary>Persegi</summary>
+            <div class="form-input">
+                <label for="sisi">Masukkan sisi Persegi: </label>
+                <input type="number" id="sisi" name="sisi">
+            </div>
+        </details>
+
+        <details>
+            <summary>Lingkaran</summary>
+            <div class="form-input">
+                <label for="jari-jari">Masukkan jari-jari Lingkaran: </label>
+                <input type="number" id="jari-jari" name="jari-jari">
+            </div>
+        </details>
+
+        <details>
+            <summary>Segitiga</summary>
+            <div class="form-input">
+                <label for="alas">Masukkan alas Segitiga: </label>
+                <input type="number" id="alas" name="alas"><br>
+                <label for="tinggi">Masukkan tinggi Segitiga: </label>
+                <input type="number" id="tinggi" name="tinggi">
+            </div>
+        </details>
+    </div>
+</body>
+</html>

@@ -2,6 +2,27 @@ from django import forms
 from django.contrib.auth.models import User 
 
 
+####math 
+#Geometri 
+
+
+# Form untuk Persegi
+class PersegiForm(forms.Form):
+    sisi = forms.FloatField(label='Masukkan sisi Persegi', min_value=0)
+
+# Form untuk Lingkaran
+class LingkaranForm(forms.Form):
+    jari_jari = forms.FloatField(label='Masukkan jari-jari Lingkaran', min_value=0)
+
+# Form untuk Segitiga
+class SegitigaForm(forms.Form):
+    alas = forms.FloatField(label='Masukkan alas Segitiga', min_value=0)
+    tinggi = forms.FloatField(label='Masukkan tinggi Segitiga', min_value=0)
+
+
+
+
+
 ##### authentication
 class FormLogin(forms.Form):
     username = forms.CharField (
@@ -40,6 +61,6 @@ class FormSignUp(forms.Form):
 
 
 
-#aaa
+
 
     

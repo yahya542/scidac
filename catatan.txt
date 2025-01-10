@@ -9,3 +9,53 @@
                                         <div class="header">Sabtu</div>
                                     </div>
                                 </div>
+
+
+
+                                from django.shortcuts import render
+from django.http import JsonResponse
+from .forms import PersegiForm, LingkaranForm, SegitigaForm
+import numpy as np
+
+# Fungsi untuk menghitung luas
+def hitung_luas(bentuk, sisi=None, jari_jari=None, alas=None, tinggi=None):
+    if bentuk == 'persegi':
+        # Luas persegi = sisi^2
+        return np.power(sisi, 2)
+    elif bentuk == 'lingkaran':
+        # Luas lingkaran = pi * r^2
+        return np.pi * np.power(jari_jari, 2)
+    elif bentuk == 'segitiga':
+        # Luas segitiga = 0.5 * alas * tinggi
+        return 0.5 * alas * tinggi
+    else:
+        return None
+
+# View untuk menampilkan form dan menangani perhitungan
+def index(request):
+    form = None
+    bentuk = None
+    hasil = None
+
+    # Jika request POST, tentukan bentuk dan form yang sesuai
+    if request.method == 'POST':
+        bentuk = request.POST.get('bentuk')
+
+        if bentuk == 'persegi':
+            form = PersegiForm(request.POST)
+            if form.is_valid():
+                sisi = form.cleaned_data['sisi']
+                hasil = hitung_luas(bentuk, sisi=sisi)
+        elif bentuk == 'lingkaran':
+            form = LingkaranForm(request.POST)
+            if form.is_valid():
+                jari_jari = form.cleaned_data['jari_jari']
+                hasil = hitung_luas(bentuk, jari_jari=jari_jari)
+        elif bentuk == 'segitiga':
+            form = SegitigaForm(request.POST)
+            if form.is_valid():
+                alas = form.cleaned_data['alas']
+                tinggi = form.cleaned_data['tinggi']
+                hasil = hitung_luas(bentuk, alas=alas, tinggi=tinggi)
+    
+    return render(request, 'perhitungan/index.html', {'form': form, 'bentuk': bentuk, 'hasil': hasil})

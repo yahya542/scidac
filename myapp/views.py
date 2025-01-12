@@ -102,6 +102,10 @@ def signup_view(request):
 
     return render(request, 'autentikasi/register.html', {'form': form})
 
+#edit-profile
+def edit_profile (request) : 
+    return render (request, 'autentikasi/edit_profil.html')
+
 
 
 

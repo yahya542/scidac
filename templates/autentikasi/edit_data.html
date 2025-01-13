@@ -191,7 +191,7 @@
                   <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-center"
                   >
-                    <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"> Edit atau Tambah Data Diri</h6>
                    
                   </div>
                   <div
@@ -203,102 +203,27 @@
                     "
                     class="card-body"
                   >
-                    <div
-                      style="
-                        justify-content: center;
-                        width: 335px;
-                        height: 100px;
-                        display: flex;
-                      "
-                    >
-                      <img
-                        style="height: 100px; width: 100px"
-                        class="img-profile rounded-circle"
-                        src="{% static 'img/undraw_profile.svg'%}"
-                        
-                      />
-                      
-                    </div>
                     
-                     <a       href="/edit_profile"> <img  style="margin-left: 160px; background-color: white; border-radius: 5px;     margin-top: -50px; height: 30px;"     src="{% static 'img/edit.svg' %}" alt="edit"> </a>
-               
-                    <hr />
+                  {% block content %}
+                
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Simpan</button>
+                  </form>
+                {% endblock %}
+                
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
 
-                    <div
-                      style="margin-top: 10px; font-family: sans-serif"
-                      class="text-600"
-                    >
-                      <small> Nama </small>
-                      <br />
-                      <h6 class="form-control">{{user.username}}</h6>
-                      <small> Email </small>
-                      <br />
-                      <h6 class="form-control">{{user.email}}</h6>
-                      <small> No.Handphone </small>
-                      <br />
-                      <h6 class="form-control">{{user.hp}}</h6>
-                      <small> Alamat </small>
-                      <br />
-                      <h6 class="form-control">{{user.alamat}}</h6>
-                      <small> Gender </small>
-                      <br />
-                      <h6 class="form-control">{{user.gender}}</h6>
-                    </div>
-                    <hr />
-                    <div style="height: 50px; justify-content: center; display: flex; align-items:center ;" class="text-primary" >
-                      Lengkapi atau Ubah Data Anda Disini
-                      <a href="/edit_data"> <img style="height: 20px; width: 20px; margin-top: -5px;"  src="{% static 'img/edit.svg' %}" alt="edit"> </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="isi">
-            <div class="row">
-              <div class="col-xl-4 col-lg-5">
-                <div
-                  class="card shadow mb-5"
-                  style="width: 370px; margin-left: 400px"
-                >
-                  <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-center"
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      Pengaturan Akun
-                    </h6>
-                  </div>
-                  <div
-                    style="
-                      background-color: white;
-                      height: auto;
-                      align-items: top;
-                      width: 368px;
-                    "
-                    class="card-body"
-                  >
-                    <p>Ubah Sandi</p>
-                    <hr />
-                    <p>Hapus Akun</p>
-                    <hr />
-                    <p
-                      style="
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 210px;
-                      "
-                    >
-                      <span style="margin-top: -5px;">Log out</span>
-                      <i
-                        class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"
-                      ></i>
-                    </p>
-                    <hr />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         
+          
+         
         </div>
 
         <!-- End of Main Content -->

@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile
+from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data
 
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
     path("forgot",forgot, name="forgot"),
     path("akun",akun, name="akun"),
     path("edit_profile", edit_profile, name="edit_profile"),
+     path("edit_data", edit_data, name="edit_data"),
 
 
     ##math

@@ -12,3 +12,17 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.judul
+
+
+
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    no_hp = models.CharField(max_length=15, blank=True)  # Untuk menyimpan nomor telepon
+    alamat = models.TextField(blank=True)  # Untuk menyimpan alamat
+
+    def __str__(self):
+        return self.user.username

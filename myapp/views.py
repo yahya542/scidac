@@ -3,7 +3,8 @@ from django.contrib import messages
 from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-
+from .models import Todo
+from .forms import TodoForm
 
 
 
@@ -58,7 +59,50 @@ def k(request):
 def dac(request): 
     return render (request, 'dac/dac.html')
 def buat(request): 
-    return render (request, 'dac/buat_todo.html')
+    return render (request, 'dac/add_todo.html')
+
+
+
+
+def todo_list(request):
+    todos = Todo.objects.all()
+    return render(request, 'dac/dac.html', {'todos': todos})
+
+def add_todo(request):
+    if request.method == "POST":
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('todo_list')
+    else:
+        form = TodoForm()
+    return render(request, 'dac/add_todo.html', {'form': form})
+
+def toggle_complete(request, pk):
+    todo = Todo.objects.get(id=pk)
+    todo.completed = not todo.completed
+    todo.save()
+    return redirect('todo_list')
+
+def delete_todo(request, pk):
+    todo = Todo.objects.get(id=pk)
+    todo.delete()
+    return redirect('todo_list')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #school 
 def school(request): 

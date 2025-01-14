@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
+from .models import Todo
 
 
 
@@ -61,7 +62,18 @@ class FormSignUp(forms.Form):
                 raise forms.ValidationError("Password dan konfirmasi password tidak cocok.")
         return cleaned_data
     
-#tambahan
+#todo
+
+
+
+class TodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+        fields = ['task']
+        widgets = {
+            'task': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tulis tugas baru...'}),
+        }
+
 
     
 

@@ -32,6 +32,16 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: grey;
+        }
+        .card {
+            margin-bottom: 10px;
+        }
+    </style>
 
 
 </head>
@@ -163,59 +173,27 @@
 
                 <!-- dasar -->
 
-                <div class=" col-xl-4 col-lg-5">
-                    <div style="width: 400px; margin-left: 400px; " class="card shadow mb-5">
-                        <div class=" grid-container ">
-                            <div style="text-align: center; align-items: center;"
-                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Buat List Baru </h6>
-                            </div>
-                            <div style="background-color: white; height: 360px;" class="card-body">
-
-
-
-                                <table border="1">
-                                    <thead>
-                                        <tr>
-                                            <th>Judul</th>
-                                            <th>Deskripsi</th>
-                                            <th>Tanggal Tenggat</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for todo in todos %}
-                                        <tr>
-                                            <td>{{ todo.judul }}</td>
-                                            <td>{{ todo.deskripsi }}</td>
-                                            <td>{% if todo.tanggal_tenggat %}{{ todo.tanggal_tenggat }}{% else %}Belum
-                                                ada{% endif %}</td>
-                                            <td>{% if todo.selesai %}Selesai{% else %}Belum Selesai{% endif %}</td>
-                                            <td>
-                                                <!-- Tindakan untuk mengubah status atau menghapus -->
-                                                <a href="#">Ubah</a> | <a href="#">Hapus</a>
-                                            </td>
-                                        </tr>
-                                        {% empty %}
-                                        <tr>
-                                            <td colspan="5">Tidak ada to-do yang ditemukan.</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <br><br><br>
-
-                                <a href="/dac-buat" class="btn btn-primary">Tambah To-Do Baru</a>
-
-
-
-                            </div>
-
-                        </div>
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Add New Task</title>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+                </head>
+                <body>
+                    <div class="container mt-5">
+                        <h1>Add New Task</h1>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Add Task</button>
+                        </form>
+                        <a href="{% url 'todo_list' %}" class="btn btn-link mt-3">Back to To-Do List</a>
                     </div>
-                </div>
-
+                </body>
+                </html>
+                
 
 
 

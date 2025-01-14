@@ -1,0 +1,21 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <!-- Anda bisa menambahkan link CSS di sini -->
+</head>
+<body>
+   
+
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; sajakCodingan</p>
+    </footer>
+</body>
+</html>

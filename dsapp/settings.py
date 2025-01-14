@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'dsapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myapp',
+        'NAME': 'scidac',
         'USER': "root",
         'PASSWORD': "deya2501",
         "HOST" : "localhost",

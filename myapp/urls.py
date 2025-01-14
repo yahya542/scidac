@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import  g, a,k, rlg, math, sc, dac, school, buat, cu
+from myapp.views import  g, a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo
 
 
 urlpatterns = [
@@ -27,6 +27,10 @@ urlpatterns = [
     #dashboard 
     path('-dac', dac , name='dac' ),
     path('-buat', buat , name='buat'),
+     path('-lihat',todo_list, name='todo_list'),
+    path('-tambah/', add_todo, name='add_todo'),
+    path('toggle_complete/<int:pk>/',toggle_complete, name='toggle_complete'),
+    path('delete/<int:pk>/',delete_todo, name='delete_todo'),
 
     ###school
     #school 

@@ -1,11 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Profile
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['no_hp', 'alamat']
+
 
 
 ####math 
@@ -64,6 +60,10 @@ class FormSignUp(forms.Form):
             if password != confirm_password:
                 raise forms.ValidationError("Password dan konfirmasi password tidak cocok.")
         return cleaned_data
+    
+#tambahan
+
+    
 
 
 

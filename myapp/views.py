@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .forms import FormLogin
 from django.contrib.auth import login, authenticate
-from .forms import FormLogin, ProfileForm
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-from .models import Profile
+
+
+
 
 
 
@@ -118,23 +119,6 @@ def edit_data (request) :
 
 
 
-
-
-
-@login_required
-def update_profile(request):
-    # Coba mendapatkan profil pengguna atau buat profil baru jika belum ada
-    profile, created = Profile.objects.get_or_create(user=request.user)
-
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')  # Ganti dengan URL yang sesuai untuk menampilkan profil pengguna
-    else:
-        form = ProfileForm(instance=profile)
-
-    return render(request, 'update_profile.html', {'form': form})
 
 
 

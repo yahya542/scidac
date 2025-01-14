@@ -15,7 +15,7 @@ urlpatterns = [
     path("forgot",forgot, name="forgot"),
     path("akun",akun, name="akun"),
     path("edit_profile", edit_profile, name="edit_profile"),
-     path("edit_data", edit_data, name="edit_data"),
+    path("edit_data", edit_data, name="edit_data"),
 
 
     ##math
@@ -35,6 +35,8 @@ urlpatterns = [
 
     #contact
     path('cu', include('myapp.urls')),
+
+
 
 
 

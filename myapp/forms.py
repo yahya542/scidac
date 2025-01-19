@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Todo
+from .models import Todo, Persegi
 
 
 
@@ -10,9 +10,10 @@ from .models import Todo
 
 
 # Form untuk Persegi
-class PersegiForm(forms.Form):
-    sisi = forms.FloatField(label='Masukkan sisi Persegi', min_value=0)
-
+class PersegiForm(forms.ModelForm):
+    class Meta:
+        model = Persegi
+        fields = ['sisi']
 # Form untuk Lingkaran
 class LingkaranForm(forms.Form):
     jari_jari = forms.FloatField(label='Masukkan jari-jari Lingkaran', min_value=0)

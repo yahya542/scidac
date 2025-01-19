@@ -4,13 +4,45 @@ from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
-from .forms import TodoForm
+from .forms import TodoForm, PersegiForm
+
+
+
+
+
+#math 
+def math(request): 
+    return render (request, 'math/math.html')
+#dasar
+
+#persegi 
+def geometri(request):
+    luas = None  # Default nilai luas
+    if request.method == 'POST':
+        form = PersegiForm(request.POST)
+        if form.is_valid():
+            # Simpan data sisi persegi ke model
+            sisi = form.cleaned_data['sisi']
+            # Hitung luas menggunakan model
+            luas = sisi**2
+    else:
+        form = PersegiForm()  # Jika request bukan POST, buat form kosong
+    
+    return render(request, 'math/dasar/Geometri.html', {'form': form, 'luas': luas})
 
 
 
 
 
 
+
+
+#menengah
+def a(request): 
+    return render (request, 'math/menengah/aljabar.html')
+#tinggi
+def k(request): 
+    return render (request, 'math/tinggi/kalkulus.html')
 
 #science 
 def sc (request): 
@@ -41,18 +73,7 @@ def akun(request):
     return render(request, 'autentikasi/akun.html')
 
 
-#math 
-def math(request): 
-    return render (request, 'math/math.html')
-#dasar
-def g(request): 
-    return render (request, 'math/dasar/geometri.html')
-#menengah
-def a(request): 
-    return render (request, 'math/menengah/aljabar.html')
-#tinggi
-def k(request): 
-    return render (request, 'math/tinggi/kalkulus.html')
+
 
 
 #dac 

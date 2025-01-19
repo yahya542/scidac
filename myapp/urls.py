@@ -1,13 +1,14 @@
 
 from django.urls import path
-from myapp.views import  g, a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo
+from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, geometri
 
 
 urlpatterns = [
     ## math ##
     path('-math', math, name='math' ),
     #Dasar
-    path('-geometri', g, name='geometri'), 
+   
+    path('-geometri', geometri, name='geometri'),
     #menengah       
     path('-aljabar', a, name='aljabar'),
     #tinggi

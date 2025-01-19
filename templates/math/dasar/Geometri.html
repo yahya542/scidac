@@ -31,8 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul  class="navbar-nav bg-info sidebar sidebar-dark accordion toggled"
-            id="accordionSidebar">
+        <ul class="navbar-nav bg-info sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
@@ -52,10 +51,10 @@
                     <span> Kembali Ke Beranda</span></a>
             </li>
             <hr class="sidebar-divider">
-             <hr class="sidebar-divider">
+            <hr class="sidebar-divider">
             <li class="nav-item active">
                 <a class="nav-link" href="/math-math">
-                    <i> <img src="{% static 'img/back.svg' %}" alt="back"></i> 
+                    <i> <img src="{% static 'img/back.svg' %}" alt="back"></i>
                     <span><br> Kembali Ke Menu Matematika </span></a>
             </li>
 
@@ -162,23 +161,39 @@
 
                 <div class="row">
 
-                    
+
                     <div class="col-xl-4 col-lg-5">
                         <div class="card shadow mb-5" style="width: 600px; margin-left: 10px;">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Bangun Datar</h6>
                             </div>
+                            <form method="post"></form>
+                            {% csrf_token %}
                             <div style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;"
                                 class="card-body width:600px;">
-                                <details style="margin-top: -250px; width: 700px; margin-left: 30px; margin-right:-150px ;" class="btn btn-info">
+                                <details
+                                    style="margin-top: -200px; width: 700px; margin-left: 30px; margin-right:-150px ;"
+                                    class="btn btn-info">
+
                                     <summary>Persegi</summary>
                                     <div class="form-input">
-                                        <label for="sisi">Masukkan sisi Persegi: </label>
-                                        <input type="number" id="sisi" name="sisi">
-                                        <button><a href=""><img src="{%static 'img/play.svg' %}" alt=""></a></button>
+                                        <label for="sisi">Masukkan sisi Persegi:  </label>
+                                        {{form}} <button type="submit"><img src="{%static 'img/play.svg' %}" alt=""></button>
+
                                     </div>
                                 </details>
-                    
+                                </form>
+
+                                {% if luas is not None %}
+                                <div>
+                                    <p>Luas Persegi adalah: {{ luas }}</p>  <!-- Menampilkan hasil luas -->
+                                </div>
+                            {% endif %}
+
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -189,7 +204,7 @@
                             </div>
                             <div style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;"
                                 class="card-body">
-                                
+
 
                             </div>
                         </div>

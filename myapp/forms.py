@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Todo, Persegi
+from .models import Todo, Persegi, PersegiPanjang
 
 
 
@@ -15,15 +15,18 @@ class PersegiForm(forms.ModelForm):
         model = Persegi
         fields = ['sisi']
 # Form untuk Lingkaran
-class LingkaranForm(forms.Form):
-    jari_jari = forms.FloatField(label='Masukkan jari-jari Lingkaran', min_value=0)
+
+    
 
 # Form untuk Segitiga
-class SegitigaForm(forms.Form):
-    alas = forms.FloatField(label='Masukkan alas Segitiga', min_value=0)
-    tinggi = forms.FloatField(label='Masukkan tinggi Segitiga', min_value=0)
+class PersegiPanjangForm(forms.ModelForm):
+    panjang = forms.FloatField(label='panjang', min_value=0)
+    lebar = forms.FloatField(label='lebar', min_value=0)
 
-
+class PersegiPanjangForm(forms.ModelForm):
+    class Meta:
+        model = PersegiPanjang
+        fields = ['panjang', 'lebar']
 
 
 

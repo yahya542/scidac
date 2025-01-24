@@ -4,7 +4,7 @@ from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
-from .forms import TodoForm, PersegiForm
+from .forms import TodoForm, PersegiForm, PersegiPanjangForm
 
 
 
@@ -16,19 +16,33 @@ def math(request):
 #dasar
 
 #persegi 
-def geometri(request):
-    luas = None  # Default nilai luas
+def bangunDatar (request) : 
+    persegi_form = PersegiForm()
+    persegi_panjang_form = PersegiPanjangForm()
+    result = None
+
     if request.method == 'POST':
-        form = PersegiForm(request.POST)
-        if form.is_valid():
-            # Simpan data sisi persegi ke model
-            sisi = form.cleaned_data['sisi']
-            # Hitung luas menggunakan model
-            luas = sisi**2
-    else:
-        form = PersegiForm()  # Jika request bukan POST, buat form kosong
-    
-    return render(request, 'math/dasar/Geometri.html', {'form': form, 'luas': luas})
+        # Tangani form persegi
+        if 'sisi' in request.POST:
+            persegi_form = PersegiForm(request.POST)
+            if persegi_form.is_valid():
+                sisi = persegi_form.cleaned_data['sisi']
+                result = f'Luas: {sisi * sisi}  keliling: {4*sisi}'
+
+        # Tangani form persegi panjang
+        elif 'panjang' in request.POST and 'lebar' in request.POST:
+            persegi_panjang_form = PersegiPanjangForm(request.POST)
+            if persegi_panjang_form.is_valid():
+                panjang = persegi_panjang_form.cleaned_data['panjang']
+                lebar = persegi_panjang_form.cleaned_data['lebar']
+                result = f'Luas: {panjang * lebar}'
+
+    return render(request, 'math/dasar/Geometri.html', {
+        'persegi_form': persegi_form,
+        'persegi_panjang_form': persegi_panjang_form,
+        'result': result,
+    })
+
 
 
 

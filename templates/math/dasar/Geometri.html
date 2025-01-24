@@ -74,7 +74,6 @@
         </ul>
         <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -83,17 +82,13 @@
                 <!-- Topbar -->
                 <nav style="background-color:#79D7BE;"
                     class="navbar navbar-expand navbar bg topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -117,8 +112,6 @@
                                 </form>
                             </div>
                         </li>
-                        <!-- myapp/templates/myapp/jadwal.html -->
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -133,93 +126,96 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
+
                 <!-- End of Topbar -->
 
-
-
                 <div class="row">
-
-
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-5" style="width: 600px; margin-left: 10px;">
+                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
+                        <div class="card shadow mb-5">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Bangun Datar</h6>
                             </div>
-                            <form method="post"></form>
-                            {% csrf_token %}
-                            <div style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;"
-                                class="card-body width:600px;">
-                                <details
-                                    style="margin-top: -200px; width: 700px; margin-left: 30px; margin-right:-150px ;"
-                                    class="btn btn-info">
+                            <div class="card-body">
+                                <div class="form-container">
+                                    <form method="post" class="form-item">
+                                        {% csrf_token %}
+                                        <details class="btn btn-info">
+                                            <summary>Persegi</summary>
+                                            <div class="form-input">
+                                                <label>Masukkan sisi</label>
+                                                {{ persegi_form.sisi }}
+                                                <button type="submit"><img src="{% static 'img/play.svg' %}"
+                                                        alt=""></button>
+                                                {% if result %}
+                                                <div>
+                                                    <h6> {{ result }}</h6>
+                                                  
 
-                                    <summary>Persegi</summary>
-                                    <div class="form-input">
-                                        <label for="sisi">Masukkan sisi Persegi:  </label>
-                                        {{form}} <button type="submit"><img src="{%static 'img/play.svg' %}" alt=""></button>
+                                                    
 
-                                    </div>
-                                </details>
-                                </form>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </details>
+                                    </form>
 
-                                {% if luas is not None %}
-                                <div>
-                                    <p>Luas Persegi adalah: {{ luas }}</p>  <!-- Menampilkan hasil luas -->
+                                    <form method="post" class="form-item">
+                                        {% csrf_token %}
+                                        <details class="btn btn-info">
+                                            <summary>Persegi Panjang</summary>
+                                            <div class="form-input">
+                                                <label>Masukkan panjang</label>
+                                                {{ form.panjang }}
+                                                <label>Masukkan lebar</label>
+                                                {{ form.lebar }}
+                                                <button type="submit"><img src="{% static 'img/play.svg' %}"
+                                                        alt=""></button>
+                                                {% if luas is not None %}
+                                                <div>
+                                                    <p>Luas: {{ luas }}</p>
+                                                    <p>Keliling: {{ keliling }}</p>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </details>
+                                    </form>
                                 </div>
-                            {% endif %}
-
-
-
-
-
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-5" style="width: 600px; margin-left: 200px;">
+
+                    <!-- Bangun Ruang -->
+                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
+                        <div class="card shadow mb-5">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Bangun Ruang</h6>
                             </div>
-                            <div style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;"
-                                class="card-body">
-
-
+                            <div class="card-body">
+                                <div
+                                    style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;">
+                                    <!-- Konten Bangun Ruang -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -231,13 +227,9 @@
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

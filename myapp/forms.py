@@ -1,32 +1,22 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Todo, Persegi, PersegiPanjang
+from .models import Todo
 
 
 
 
 ####math 
 #Geometri 
+#persegi 
+from django import forms
 
-
-# Form untuk Persegi
-class PersegiForm(forms.ModelForm):
-    class Meta:
-        model = Persegi
-        fields = ['sisi']
-# Form untuk Lingkaran
-
+class PersegiForm(forms.Form):
+    panjang = forms.FloatField(label='Panjang Sisi', min_value=0)
     
-
-# Form untuk Segitiga
-class PersegiPanjangForm(forms.ModelForm):
-    panjang = forms.FloatField(label='panjang', min_value=0)
-    lebar = forms.FloatField(label='lebar', min_value=0)
-
-class PersegiPanjangForm(forms.ModelForm):
-    class Meta:
-        model = PersegiPanjang
-        fields = ['panjang', 'lebar']
+#segitiga
+class SegitigaForm(forms.Form):
+    alas = forms.FloatField(label='Alas', min_value=0)
+    tinggi = forms.FloatField(label='Tinggi', min_value=0)
 
 
 

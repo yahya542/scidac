@@ -53,9 +53,9 @@
             <hr class="sidebar-divider">
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="/math-math">
+                <a class="nav-link" href="/math-geometri">
                     <i> <img src="{% static 'img/back.svg' %}" alt="back"></i>
-                    <span><br> Kembali Ke Menu Matematika </span></a>
+                    <span><br> Kembali </span></a>
             </li>
 
 
@@ -145,100 +145,108 @@
 
                 <!-- End of Topbar -->
 
-                <div class="row">
-                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
+                <div class="row" style="width: 500px;">
+                    <div class="col-xl-12 col-lg-12 col-md-12" style="margin-left: 100px;">
                         <div class="card shadow mb-5">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Bangun Datar</h6>
+                                <h6 class="m-0 font-weight-bold text-primary"> Hitung</h6>
                             </div>
                             <div class="card-body">
                                 <div class="form-container">
-                                    <button class="btn btn-info"> <a style="color: aliceblue;"
-                                            href="{% url 'persegi' %}">
-                                            Persegi</a></button>
-                                    <button class="btn btn-warning"> <a style="color: aliceblue;"
-                                            href="{% url 'segitiga' %}">
-                                            Segitiga</a></button>
-                                    <button class="btn btn-success"> <a style="color: aliceblue;"
-                                            href="{% url 'Ppanjang' %}">
-                                            Persegi Panjang</a></button>
+
+
+                                    <h1 style="font-family: sans-serif; color: black;" class="text-center">Perhitungan {{ bentuk }}</h1> <br><br>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <button type="submit" style="background-color: chartreuse;">Hitung</button>
+                                    </form>
+                                    <br><br>
+
+                                    {% if luas %}
+                                    <h6 style="color: red">Luas {{ bentuk }}: {{ luas }}</h6>
+                                    {% endif %}
+
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Bangun Ruang -->
-                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
+                </div>
+                <!-- Bangun Ruang -->
+                <div class="row" style="margin-top: -340px; width: 500px; margin-left: 625px; display: flex;">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="card shadow mb-5">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Bangun Ruang</h6>
+                                <h6 class="m-0 font-weight-bold text-primary"> Rumus</h6>
                             </div>
                             <div class="card-body">
-                                <div class="form-container">
-                                    <button>kubus</button>
+                                <div
+                                    style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;">
+                                    <!-- Konten Bangun Ruang -->
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>by &copy; sajakCodingan</span> &nbsp;&nbsp;&nbsp;&nbsp; <br>
+                            <span>&copy; Muhammad Yahya Abdullahissalam</span>
+
+
+
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>by &copy; sajakCodingan</span> &nbsp;&nbsp;&nbsp;&nbsp; <br>
-                        <span>&copy; Muhammad Yahya Abdullahissalam</span>
+        </div>
 
 
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="/">Logout</a>
                     </div>
                 </div>
-            </footer>
-        </div>
-    </div>
-
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/">Logout</a>
-                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+        <!-- Page level custom scripts -->
+        <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+        <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
 
 </body>
 

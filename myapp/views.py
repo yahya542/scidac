@@ -4,7 +4,7 @@ from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
-from .forms import TodoForm, PersegiForm, PersegiPanjangForm
+from .forms import TodoForm, PersegiForm, SegitigaForm
 
 
 
@@ -14,34 +14,37 @@ from .forms import TodoForm, PersegiForm, PersegiPanjangForm
 def math(request): 
     return render (request, 'math/math.html')
 #dasar
+def geometri(request) : 
+    return render (request, 'math/dasar/geometri.html' )
 
-#persegi 
-def bangunDatar (request) : 
-    persegi_form = PersegiForm()
-    persegi_panjang_form = PersegiPanjangForm()
-    result = None
 
+
+
+
+def persegi(request):
     if request.method == 'POST':
-        # Tangani form persegi
-        if 'sisi' in request.POST:
-            persegi_form = PersegiForm(request.POST)
-            if persegi_form.is_valid():
-                sisi = persegi_form.cleaned_data['sisi']
-                result = f'Luas: {sisi * sisi}  keliling: {4*sisi}'
+        form = PersegiForm(request.POST)
+        if form.is_valid():
+            sisi = form.cleaned_data['panjang']
+            luas = sisi ** 2
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi'})
+    else:
+        form = PersegiForm()
 
-        # Tangani form persegi panjang
-        elif 'panjang' in request.POST and 'lebar' in request.POST:
-            persegi_panjang_form = PersegiPanjangForm(request.POST)
-            if persegi_panjang_form.is_valid():
-                panjang = persegi_panjang_form.cleaned_data['panjang']
-                lebar = persegi_panjang_form.cleaned_data['lebar']
-                result = f'Luas: {panjang * lebar}'
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Persegi'})
 
-    return render(request, 'math/dasar/Geometri.html', {
-        'persegi_form': persegi_form,
-        'persegi_panjang_form': persegi_panjang_form,
-        'result': result,
-    })
+def segitiga(request):
+    if request.method == 'POST':
+        form = SegitigaForm(request.POST)
+        if form.is_valid():
+            alas = form.cleaned_data['alas']
+            tinggi = form.cleaned_data['tinggi']
+            luas = 0.5 * alas * tinggi
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Segitiga'})
+    else:
+        form = SegitigaForm()
+
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Segitiga'})
 
 
 

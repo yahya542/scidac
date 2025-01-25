@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, persegi, segitiga, geometri
+from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, persegi, segitiga, geometri, Ppanjang
 
 
 urlpatterns = [
@@ -10,6 +10,7 @@ urlpatterns = [
     path('-geometri', geometri, name='geometri'),
     path('persegi/', persegi, name='persegi'),
     path('segitiga/', segitiga, name='segitiga'),
+    path('Ppanjang/', Ppanjang, name='Ppanjang'),
     
 
     #menengah       

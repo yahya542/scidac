@@ -4,7 +4,7 @@ from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
-from .forms import TodoForm, PersegiForm, SegitigaForm
+from .forms import TodoForm, PersegiForm, SegitigaForm, PpanjangForm 
 
 
 
@@ -45,6 +45,19 @@ def segitiga(request):
         form = SegitigaForm()
 
     return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Segitiga'})
+
+def Ppanjang(request):
+    if request.method == 'POST':
+        form = PpanjangForm(request.POST)
+        if form.is_valid():
+            panjang = form.cleaned_data['panjang']
+            lebar = form.cleaned_data['lebar']
+            luas = panjang * lebar 
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi Panjang'})
+    else:
+        form = PpanjangForm()
+
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Persegi Panjang'})
 
 
 

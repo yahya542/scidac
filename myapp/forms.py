@@ -8,10 +8,15 @@ from .models import Todo
 ####math 
 #Geometri 
 #persegi 
-from django import forms
+
 
 class PersegiForm(forms.Form):
     panjang = forms.FloatField(label='Panjang Sisi', min_value=0)
+
+#pp
+class PpanjangForm(forms.Form):
+    panjang = forms.FloatField(label='Panjang', min_value=0)
+    lebar = forms.FloatField(label='Lebar', min_value=0)
     
 #segitiga
 class SegitigaForm(forms.Form):

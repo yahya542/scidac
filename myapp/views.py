@@ -4,30 +4,28 @@ from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
-from .forms import TodoForm, PersegiForm, SegitigaForm, PpanjangForm 
+from .forms import TodoForm, PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm
+import numpy as np
 
 
 
 
 
-#math 
+#=======math=====# 
 def math(request): 
     return render (request, 'math/math.html')
-#dasar
+#=dasar=#
 def geometri(request) : 
     return render (request, 'math/dasar/geometri.html' )
-
-
-
-
-
+#bangun datar
 def persegi(request):
     if request.method == 'POST':
         form = PersegiForm(request.POST)
         if form.is_valid():
             sisi = form.cleaned_data['panjang']
             luas = sisi ** 2
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi'})
+            keliling = 4 * sisi 
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi' , 'keliling' : keliling})
     else:
         form = PersegiForm()
 
@@ -39,8 +37,13 @@ def segitiga(request):
         if form.is_valid():
             alas = form.cleaned_data['alas']
             tinggi = form.cleaned_data['tinggi']
+            sisi_a = form.cleaned_data['sisi_a']
+            sisi_b = form.cleaned_data['sisi_b']
+            sisi_c = form.cleaned_data['sisi_c']
             luas = 0.5 * alas * tinggi
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Segitiga'})
+            keliling = sisi_a + sisi_b + sisi_c
+          
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'keliling' : keliling,  'bentuk': 'Segitiga'})
     else:
         form = SegitigaForm()
 
@@ -53,12 +56,60 @@ def Ppanjang(request):
             panjang = form.cleaned_data['panjang']
             lebar = form.cleaned_data['lebar']
             luas = panjang * lebar 
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi Panjang'})
+            keliling = 2 * (panjang + lebar)
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi Panjang', 'keliling' : keliling})
     else:
         form = PpanjangForm()
 
     return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Persegi Panjang'})
 
+def Lingkaran(request):
+    if request.method == 'POST':
+        form = LingkaranForm(request.POST)
+        if form.is_valid():
+            jari_jari = form.cleaned_data['jari_jari']
+            luas = 3.14159 * jari_jari * jari_jari
+            keliling = 2 * 3.14159 * jari_jari
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Lingkaran', 'keliling' : keliling})
+    else:
+        form = LingkaranForm()
+
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Lingkaran'})
+
+def Bketupat(request):
+    if request.method == 'POST':
+        form = BketupatForm(request.POST)
+        if form.is_valid():
+            d1 = form.cleaned_data['d1']
+            d2 = form.cleaned_data['d2']
+            sisi = form.cleaned_data['sisi']
+            luas = (d1*d2) /2 
+            keliling = 4 * sisi
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Lingkaran', 'keliling' : keliling})
+    else:
+        form = BketupatForm()
+
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Belah Ketupat'})
+
+#bangun ruang 
+def kubus(request):
+    if request.method == 'POST':
+        form = kubusForm(request.POST)
+        if form.is_valid():
+            sisi = form.cleaned_data['sisi']
+            volume = np.power(sisi, 3)
+            lp = 6 * (np.power(sisi, 2))
+        
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'volume': volume, "lp" : lp})
+    else:
+        form = kubusForm()
+
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Kubus'})
+
+
+## === stat ===#
+def stat (request) : 
+    return render (request, 'math/dasar/statistika.html')
 
 
 

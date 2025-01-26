@@ -156,7 +156,7 @@
 
 
                                     <h1 style="font-family: sans-serif; color: black;" class="text-center">Perhitungan {{ bentuk }}</h1> <br><br>
-                                    <form method="post">
+                                    <form method="post" class="text-primary">
                                         {% csrf_token %}
                                         {{ form.as_p }}
                                         <button type="submit" style="background-color: chartreuse;">Hitung</button>
@@ -165,7 +165,15 @@
 
                                     {% if luas %}
                                     <h6 style="color: red">Luas {{ bentuk }}: {{ luas }}</h6>
+                                    <h6 style="color:darkmagenta">Keliling {{ bentuk }}: {{ keliling }}</h6>
+
                                     {% endif %}
+                                    {% if volume %}
+                                    <h6 style="color: red">Volume {{ bentuk }}: {{ volume }}</h6>
+                                    <h6 style="color:darkmagenta">Luas Permukaan {{ bentuk }}: {{ lp }}</h6>
+
+                                    {% endif %}
+                                    
 
 
 

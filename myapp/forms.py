@@ -35,7 +35,9 @@ class kubusForm(forms.Form):
     sisi = forms.FloatField(label='Sisi', min_value=0)
 
 
-
+##statistika dasar ##
+class statForm(forms.Form): 
+    sisi = forms.FloatField( widget=forms.Textarea,  label="Data (pisahkan dengan koma)")
 
 
 ##### authentication

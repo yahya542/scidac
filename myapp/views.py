@@ -4,7 +4,7 @@ from .forms import FormLogin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
-from .forms import TodoForm, PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm
+from .forms import TodoForm, PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm, statForm
 import numpy as np
 
 
@@ -108,8 +108,21 @@ def kubus(request):
 
 
 ## === stat ===#
-def stat (request) : 
-    return render (request, 'math/dasar/statistika.html')
+def stat(request): 
+     if request.method == "POST":
+        form = statForm(request.POST)
+        if form.is_valid():
+            data_input = form.cleaned_data['data']
+            data_list = [float(i) for i in data_input.split(",")]
+            
+            # Operasi statistik dasar
+            rata_rata = np.mean(data_list)
+            standar_deviasi = np.std(data_list)
+
+            return render(request, 'math/dasar/hitung.html', {'form': form, 'Rata-rata': rata_rata, "Standar Deviasi" : standar_deviasi})
+     else:
+        form = statForm()
+     return render (request, 'math/dasar/statistika.html', {'form':form,})
 
 
 

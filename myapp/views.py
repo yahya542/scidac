@@ -109,6 +109,7 @@ def kubus(request):
 
 ## === stat ===#
 def stat(request): 
+     hasil = None 
      if request.method == "POST":
         form = statForm(request.POST)
         if form.is_valid():
@@ -119,10 +120,13 @@ def stat(request):
             rata_rata = np.mean(data_list)
             standar_deviasi = np.std(data_list)
 
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'Rata-rata': rata_rata, "Standar Deviasi" : standar_deviasi})
+            hasil = {
+                "rata_rata": rata_rata,
+                "standar_deviasi": standar_deviasi,
+            }
      else:
         form = statForm()
-     return render (request, 'math/dasar/statistika.html', {'form':form,})
+     return render (request, 'math/dasar/hitung.html', {'form':form, 'hasil' : hasil})
 
 
 

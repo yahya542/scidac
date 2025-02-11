@@ -192,6 +192,8 @@
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-center"
                   >
                     <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6>
+                    
+                    
                    
                   </div>
                   <div
@@ -203,6 +205,12 @@
                     "
                     class="card-body"
                   >
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="file" name="profile_picture" accept="image/*" required>
+                    <button type="submit">Upload Foto</button>
+                  </form>
                     
                     
                  

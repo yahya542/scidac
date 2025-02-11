@@ -53,7 +53,7 @@
             <hr class="sidebar-divider">
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="/math-geometri">
+                <a class="nav-link" href="/math-math">
                     <i> <img src="{% static 'img/back.svg' %}" alt="back"></i>
                     <span><br> Kembali </span></a>
             </li>
@@ -155,7 +155,8 @@
                                 <div class="form-container">
 
 
-                                    <h1 style="font-family: sans-serif; color: black;" class="text-center">Perhitungan {{ bentuk }}</h1> <br><br>
+                                    <h1 style="font-family: sans-serif; color: black;" class="text-center">Perhitungan
+                                        {{ bentuk }} {{rumus}} </h1> <br><br>
                                     <form method="post" class="text-primary">
                                         {% csrf_token %}
                                         {{ form.as_p }}
@@ -174,15 +175,20 @@
 
                                     {% endif %}
 
-                                    {% if hasil %}
+                                    {% if result %}
+                                    {% if result.error %}
+                                    <p style="color: red;">{{ result.error }}</p>
+                                    {% else %}
+                                    <h6 style="color: black">Data: {{ result.data }}</h6>
+                                    <h6 style="color: blue">Rata-rata (Mean): {{ result.mean }}</h6>
+                                    <h6 style="color: orange">Median: {{ result.median }}</h6>
+                                    <h6 style="color: green">Modus: {{ result.modus }}</h6>
+                                    <h6 style="color: purple">Standar Deviasi: {{ result.stdev }}</h6>
+                                    {% endif %}
+                                    {% endif %}
 
-                                    <h6 style="color: red">Rata-rata: {{ hasil.rata_rata }}</h6>
-                                    <h6 style="color:darkmagenta">Standar Deviasi: {{ hasil.standar_deviasi }}</h6>
-
-                                    {% endif%}
 
 
-                                    
 
 
 

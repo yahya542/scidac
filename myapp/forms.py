@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Todo
+from .models import Todo, fotoProfle
+
 
 
 
@@ -36,8 +37,8 @@ class kubusForm(forms.Form):
 
 
 ##statistika dasar ##
-class statForm(forms.Form): 
-    sisi = forms.FloatField( widget=forms.Textarea,  label="Data (pisahkan dengan koma)")
+class statForm(forms.Form):
+    data = forms.CharField(widget=forms.Textarea, help_text="Masukkan angka yang dipisahkan dengan koma (misal: 1,2,3,4,5)")
 
 
 ##### authentication
@@ -76,10 +77,18 @@ class FormSignUp(forms.Form):
                 raise forms.ValidationError("Password dan konfirmasi password tidak cocok.")
         return cleaned_data
     
+
+#profile
+class fotoProfileForm(forms.ModelForm): 
+    class Meta: 
+        model : fotoProfle
+        fields : ['gambar_profile']
+
+
+
+
+
 #todo
-
-
-
 class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo

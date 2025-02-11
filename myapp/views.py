@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import FormLogin
+from .forms import FormLogin, fotoProfileForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo
@@ -108,25 +108,56 @@ def kubus(request):
 
 
 ## === stat ===#
-def stat(request): 
-     hasil = None 
-     if request.method == "POST":
+
+    
+# perhitungan/views.py
+
+
+
+
+def stat(request):
+    result = None
+    if request.method == 'POST':
         form = statForm(request.POST)
         if form.is_valid():
-            data_input = form.cleaned_data['data']
-            data_list = [float(i) for i in data_input.split(",")]
-            
-            # Operasi statistik dasar
-            rata_rata = np.mean(data_list)
-            standar_deviasi = np.std(data_list)
+            # Ambil data dari form dan ubah jadi list angka
+            raw_data = form.cleaned_data['data']
+            try:
+                # Ubah string data menjadi list angka
+                data = np.array([float(x.strip()) for x in raw_data.split(',') if x.strip()])  # Konversi ke array NumPy dan tangani spasi
+                if len(data) == 0:
+                    raise ValueError("Data tidak boleh kosong.")
+                
+                # Hitung statistik dasar menggunakan NumPy
+                values, counts = np.unique(data, return_counts=True)
+                
+                # Hitung modus
+                max_count = np.max(counts)
+                modes = values[counts == max_count]
 
-            hasil = {
-                "rata_rata": rata_rata,
-                "standar_deviasi": standar_deviasi,
-            }
-     else:
+                # Jika hanya ada satu modus, ambil yang pertama
+                modus = modes[0] if len(modes) == 1 else modes.tolist()
+
+                mean = np.mean(data)
+                median = np.median(data)
+                stdev = np.std(data)  # Standar deviasi
+
+                result = {
+                    'mean': mean,
+                    'median': median,
+                    'modus': modus, 
+                    'stdev': stdev,
+                    'data': data.tolist()  # Convert kembali ke list untuk ditampilkan di template
+                }
+            except ValueError as e:
+                result = {'error': f'Data yang dimasukkan tidak valid. Pastikan hanya angka yang dipisahkan koma. ({str(e)})'}
+        else:
+            result = {'error': 'Form tidak valid.'}
+    else:
         form = statForm()
-     return render (request, 'math/dasar/hitung.html', {'form':form, 'hasil' : hasil})
+
+    return render(request, 'math/dasar/hitung.html', {'form': form, 'result': result})
+
 
 
 
@@ -169,6 +200,18 @@ def forgot(request):
     return render(request, "autentikasi/forgot-password.html")
 def akun(request): 
     return render(request, 'autentikasi/akun.html')
+def fotoProfile(request): 
+    user_profile, created = fotoProfile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = fotoProfileForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('autentikasi/akun.html')  # Redirect ke halaman profil setelah update
+    else:
+        form =fotoProfileForm(instance=user_profile)
+    
+    return render(request, 'auntentikasi/akun.html', {'form': form, 'profile': user_profile})
 
 
 

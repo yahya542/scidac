@@ -205,12 +205,23 @@
                     "
                     class="card-body"
                   >
-                  <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="file" name="profile_picture" accept="image/*" required>
-                    <button type="submit">Upload Foto</button>
-                  </form>
+                  <!-- update_profile.html -->
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div>
+      <label for="id_gambar_profile">Upload Foto Profil</label>
+      {{ form.as_p }}
+  </div>
+  <button type="submit">Update Foto Profil</button>
+</form>
+
+{% if user.fotoProfile.gambar_profile %}
+  <h3>Foto Profil Anda:</h3>
+  <img src="{{ user.fotoprofile.gambar_profile.url }}" alt="Foto Profil" width="150">
+{% endif %}
+
+                
+                
                     
                     
                  

@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import FormLogin, fotoProfileForm
+from .forms import FormLogin, FotoProfileForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from .models import Todo
+from .models import Todo, fotoProfile
 from .forms import TodoForm, PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm, statForm
 import numpy as np
 
@@ -200,21 +200,22 @@ def forgot(request):
     return render(request, "autentikasi/forgot-password.html")
 def akun(request): 
     return render(request, 'autentikasi/akun.html')
-def fotoProfile(request): 
-    user_profile, created = fotoProfile.objects.get_or_create(user=request.user)
+
+def update_profile(request):
+    try:
+        foto_profile = fotoProfile.objects.get(user=request.user)
+    except fotoProfile.DoesNotExist:
+        foto_profile = None
 
     if request.method == 'POST':
-        form = fotoProfileForm(request.POST, request.FILES, instance=user_profile)
+        form = FotoProfileForm(request.POST, request.FILES, instance=foto_profile)
         if form.is_valid():
             form.save()
-            return redirect('autentikasi/akun.html')  # Redirect ke halaman profil setelah update
+            return redirect('dashboard')  # Redirect ke halaman profil setelah upload
     else:
-        form =fotoProfileForm(instance=user_profile)
-    
-    return render(request, 'auntentikasi/akun.html', {'form': form, 'profile': user_profile})
+        form = FotoProfileForm(instance=foto_profile)
 
-
-
+    return render(request, 'autentikasi/akun.html', {'form': form})
 
 
 #dac 
@@ -321,9 +322,9 @@ def edit_profile (request) :
 def edit_data (request) : 
     return render (request, 'autentikasi/edit_data.html')
 
-##userprofile
-
-
+#keuangan 
+def keuangan (request): 
+    return render (request, 'keuangan/tabungan.html')
 
 
 

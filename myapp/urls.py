@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus, stat
+from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus, stat, keuangan
 
 
 urlpatterns = [
@@ -48,7 +48,14 @@ urlpatterns = [
     path('-school', school, name='school' ),
 
     ####contact 
-    path('-cu', cu, name='cu')
+    path('-cu', cu, name='cu'),
+
+    ##keuangan 
+    path('-tabungan', keuangan, name='tabungan'),
+
+
+
+
 
     
 

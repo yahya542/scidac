@@ -1,5 +1,4 @@
 from django.db import models
-import numpy as np
 from django.contrib.auth.models import User
 
 
@@ -12,10 +11,10 @@ class Todo(models.Model):
         return self.task
 
 
-class fotoProfle(models.Model): 
+class fotoProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    gambar_profile = models.ImageField(upload_to='media/', default='static/img/undraw_profile.svg')
+    gambar_profile = models.ImageField(null=True, blank=True, upload_to='profile_pics/')
 
     def __str__(self):
-        return self.user.username
+        return  f"Foto Profil {self.user.username}"
 

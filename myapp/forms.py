@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Todo, fotoProfle
+from .models import Todo, fotoProfile
 
 
 
@@ -79,10 +79,14 @@ class FormSignUp(forms.Form):
     
 
 #profile
-class fotoProfileForm(forms.ModelForm): 
-    class Meta: 
-        model : fotoProfle
-        fields : ['gambar_profile']
+
+
+class FotoProfileForm(forms.ModelForm):
+    class Meta:
+        model = fotoProfile  
+        fields = ['gambar_profile'] 
+        gambar_profile = forms.ImageField(required=True)
+   
 
 
 

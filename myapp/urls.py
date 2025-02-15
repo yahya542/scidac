@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus, stat, keuangan
+from myapp.views import   a,k, rlg, math, sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus, stat
 
 
 urlpatterns = [
@@ -51,7 +51,7 @@ urlpatterns = [
     path('-cu', cu, name='cu'),
 
     ##keuangan 
-    path('-tabungan', keuangan, name='tabungan'),
+   
 
 
 

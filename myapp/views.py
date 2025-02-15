@@ -323,8 +323,6 @@ def edit_data (request) :
     return render (request, 'autentikasi/edit_data.html')
 
 #keuangan 
-def keuangan (request): 
-    return render (request, 'keuangan/tabungan.html')
 
 
 

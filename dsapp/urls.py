@@ -1,7 +1,8 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data, fotoProfile, keuangan
+from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data, fotoProfile 
+from tabunganapp.views import keuangan
 from django.conf import settings 
 from django.conf.urls.static import static
 
@@ -40,7 +41,7 @@ urlpatterns = [
     path('cu', include('myapp.urls')),
 
     #keuangan 
-    path('mo', include('myapp.urls')),
+    path('mo', include('tabunganapp.urls')),
 
 
   

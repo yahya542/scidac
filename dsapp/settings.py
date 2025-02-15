@@ -36,6 +36,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'myapp',
     'tabunganapp',
+    'islamicapp', 
+    'scdailyapp', 
+    'scienceapp',
+    'mathapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

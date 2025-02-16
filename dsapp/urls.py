@@ -2,7 +2,6 @@
 from django.contrib import admin
 from django.urls import path, include
 from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data, fotoProfile 
-from tabunganapp.views import keuangan
 from django.conf import settings 
 from django.conf.urls.static import static
 
@@ -23,7 +22,7 @@ urlpatterns = [
 
 
     ##math
-    path('math', include('myapp.urls')),
+    path('math', include('mathapp.urls')),
 
     ##religi
     path('religi', include('myapp.urls')),

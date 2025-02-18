@@ -1,5 +1,5 @@
 from django.urls import path
-from mathapp.views import  persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus,math, stat
+from mathapp.views import  persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus,math, stat, akarpangkat, akar
 
 urlpatterns = [
       ## math ##
@@ -15,5 +15,9 @@ urlpatterns = [
     path('kubus/', kubus, name='kubus'),
     #stat
     path('-stat/', stat, name='stat'),
+    path('-akarpangkat/', akarpangkat, name='akarpangkat'),
+    path('-akar/', akar, name='akar'),
+
+
 
 ]

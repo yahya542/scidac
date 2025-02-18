@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Math - Dashboard</title>
+    <title>Math - Geometri</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -31,8 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul  class="navbar-nav bg-info bg-gradient- sidebar sidebar-dark accordion toggled"
-            id="accordionSidebar">
+        <ul class="navbar-nav bg-info sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
@@ -49,8 +48,16 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> back to Dashboard</span></a>
+                    <span> Kembali Ke Beranda</span></a>
             </li>
+            <hr class="sidebar-divider">
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="/math-math">
+                    <i> <img src="{% static 'img/back.svg' %}" alt="back"></i>
+                    <span><br> Kembali Ke Menu Matematika </span></a>
+            </li>
+
 
 
             <!-- Divider -->
@@ -67,7 +74,6 @@
         </ul>
         <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -76,17 +82,13 @@
                 <!-- Topbar -->
                 <nav style="background-color:#79D7BE;"
                     class="navbar navbar-expand navbar bg topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -110,8 +112,6 @@
                                 </form>
                             </div>
                         </li>
-                        <!-- myapp/templates/myapp/jadwal.html -->
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -126,106 +126,53 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
+
                 <!-- End of Topbar -->
 
-
-
                 <div class="row">
+                   
 
-                    <!-- Card 2 (contoh lain) -->
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-5" style="width: 370px; margin-left: 10px;">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6  class="m-0 font-weight-bold text-info ">Dasar</h6>
+                    
+                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
+                        <div class="card shadow mb-5">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
+                                <h6 class="m-0 font-weight-bold text-primary"> Akar dan pangkat </h6>
                             </div>
-                            <div style=" margin-top: 0; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
-                                class="card-body">
-                                <!-- Link lain dalam card-body -->
-                                <a href="/math-geometri"  class="btn btn-info"
-                                    style="text-decoration: none; color: white; font-size: 1.25rem; padding: 10px 20px;margin-top: 0; margin-left: -20px; width: 300px;">
-                                    Geometri
-                                </a>
-                                
+                            <div class="card-body">
+                                <div  style="margin-left: 500px;">
+                                    <button class="btn btn-info"> <a style="color: aliceblue; text-decoration: none;"
+                                            href="{% url 'akar'%}">
+                                            Akar</a></button>
+                                </div>
                             </div>
-                            <div style=" margin-top: 0; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
-                                class="card-body">
-                                <!-- Link lain dalam card-body -->
-                                <a href="/math-stat"  class="btn btn-warning"
-                                    style="text-decoration: none; color: white; font-size: 1.25rem; padding: 10px 20px;margin-top: -30px; margin-left: -20px; width: 300px;">
-                                    Statistika Dasar
-                                </a>
-                                
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-5" style="width: 370px; margin-left: 10px;">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Menengah</h6>
-                            </div>
-                            <div style="background-color: white; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
-                                class="card-body">
-                                <div style=" margin-top: 0; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
-                                class="card-body">
-                                <!-- Link lain dalam card-body -->
-                                <a href="/math-akarpangkat"  class="btn btn-info"
-                                    style="text-decoration: none; color: white; font-size: 1.25rem; padding: 10px 20px;margin-top: 0; margin-left: -20px; width: 300px; ">
-                                    Akar & Pangkat
-                                </a>
-                                
-                            </div>
-                                
+                            <div class="card-body">
+                                <div class="form-container" style="margin-left: 500px;">
+                                    <button class="btn btn-info"> <a style="color: aliceblue; text-decoration: none;"
+                                            href="{% url 'kubus'%}">
+                                            pangkat</a></button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-5" style="width: 370px; margin-left: 10px;">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Tinggi</h6>
-                            </div>
-                            <div style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 368px;"
-                                class="card-body">
-                                <!-- Link lain dalam card-body -->
-                            dalam proses🙏
-                            </div>
-                        </div>
-                    </div>
-                  
+
                 </div>
-               
-
-
-
-
-
-
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -237,13 +184,9 @@
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

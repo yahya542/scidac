@@ -30,4 +30,8 @@ class kubusForm(forms.Form):
 
 ##statistika dasar ##
 class statForm(forms.Form):
-    data = forms.CharField(widget=forms.Textarea, help_text="Masukkan angka yang dipisahkan dengan koma (misal: 1,2,3,4,5)")
+    data = forms.CharField(widget=forms.Textarea, help_text= f"<br> Masukkan angka yang dipisahkan dengan koma (misal: 1,2,3,4,5)")
+
+class AkarForm(forms.Form): 
+    akar = forms.FloatField(label='Akar', min_value=0)
+    nilai = forms.FloatField(label='Nilai', min_value=0)

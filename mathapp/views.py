@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm, statForm
+from .forms import PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm, statForm, AkarForm
 import numpy as np
 
 # Create your views here.
@@ -9,6 +9,8 @@ def math(request):
 #=dasar=#
 def geometri(request) : 
     return render (request, 'math/dasar/geometri.html' )
+def akarpangkat(request) : 
+    return render (request, 'math/menengah/akarpangkat.html' )
 #bangun datar
 def persegi(request):
     if request.method == 'POST':
@@ -17,11 +19,11 @@ def persegi(request):
             sisi = form.cleaned_data['panjang']
             luas = sisi ** 2
             keliling = 4 * sisi 
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi' , 'keliling' : keliling})
+            return render(request, 'math/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi' , 'keliling' : keliling})
     else:
         form = PersegiForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Persegi'})
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'Persegi'})
 
 def segitiga(request):
     if request.method == 'POST':
@@ -35,11 +37,11 @@ def segitiga(request):
             luas = 0.5 * alas * tinggi
             keliling = sisi_a + sisi_b + sisi_c
           
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'keliling' : keliling,  'bentuk': 'Segitiga'})
+            return render(request, 'math/hitung.html', {'form': form, 'luas': luas, 'keliling' : keliling,  'bentuk': 'Segitiga'})
     else:
         form = SegitigaForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Segitiga'})
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'Segitiga'})
 
 def Ppanjang(request):
     if request.method == 'POST':
@@ -49,11 +51,11 @@ def Ppanjang(request):
             lebar = form.cleaned_data['lebar']
             luas = panjang * lebar 
             keliling = 2 * (panjang + lebar)
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi Panjang', 'keliling' : keliling})
+            return render(request, 'math/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Persegi Panjang', 'keliling' : keliling})
     else:
         form = PpanjangForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Persegi Panjang'})
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'Persegi Panjang'})
 
 def Lingkaran(request):
     if request.method == 'POST':
@@ -62,11 +64,11 @@ def Lingkaran(request):
             jari_jari = form.cleaned_data['jari_jari']
             luas = 3.14159 * jari_jari * jari_jari
             keliling = 2 * 3.14159 * jari_jari
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Lingkaran', 'keliling' : keliling})
+            return render(request, 'math/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Lingkaran', 'keliling' : keliling})
     else:
         form = LingkaranForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Lingkaran'})
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'Lingkaran'})
 
 def Bketupat(request):
     if request.method == 'POST':
@@ -77,44 +79,40 @@ def Bketupat(request):
             sisi = form.cleaned_data['sisi']
             luas = (d1*d2) /2 
             keliling = 4 * sisi
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Lingkaran', 'keliling' : keliling})
+            return render(request, 'math/hitung.html', {'form': form, 'luas': luas, 'bentuk': 'Lingkaran', 'keliling' : keliling})
     else:
         form = BketupatForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Belah Ketupat'})
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'Belah Ketupat'})
 
 #bangun ruang 
 def kubus(request):
+    rumusnya = None
     if request.method == 'POST':
         form = kubusForm(request.POST)
         if form.is_valid():
             sisi = form.cleaned_data['sisi']
             volume = np.power(sisi, 3)
             lp = 6 * (np.power(sisi, 2))
-        
-            return render(request, 'math/dasar/hitung.html', {'form': form, 'volume': volume, "lp" : lp})
+            rumusnya = f"volume = sisi^3  || luas permukaan = 6*sisi^2"
+            return render(request, 'math/hitung.html', {'form': form, 'volume': volume, "lp" : lp, 'rumusnya':rumusnya})
     else:
         form = kubusForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'bentuk': 'Kubus'})
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'Kubus' })
 
 def stat(request):
     result = None
+    rumus = None
     if request.method == 'POST':
         form = statForm(request.POST)
         if form.is_valid():
-            # Ambil data dari form dan ubah jadi list angka
             raw_data = form.cleaned_data['data']
             try:
-                # Ubah string data menjadi list angka
-                data = np.array([float(x.strip()) for x in raw_data.split(',') if x.strip()])  # Konversi ke array NumPy dan tangani spasi
+                data = np.array([float(x.strip()) for x in raw_data.split(',') if x.strip()])   
                 if len(data) == 0:
                     raise ValueError("Data tidak boleh kosong.")
-                
-                # Hitung statistik dasar menggunakan NumPy
                 values, counts = np.unique(data, return_counts=True)
-                
-                # Hitung modus
                 max_count = np.max(counts)
                 modes = values[counts == max_count]
 
@@ -132,6 +130,7 @@ def stat(request):
                     'stdev': stdev,
                     'data': data.tolist()  # Convert kembali ke list untuk ditampilkan di template
                 }
+                rumus =  "rata-rata = banyaknya data dibagi banyaknya anggota"
             except ValueError as e:
                 result = {'error': f'Data yang dimasukkan tidak valid. Pastikan hanya angka yang dipisahkan koma. ({str(e)})'}
         else:
@@ -139,5 +138,19 @@ def stat(request):
     else:
         form = statForm()
 
-    return render(request, 'math/dasar/hitung.html', {'form': form, 'result': result})
+    return render(request, 'math/hitung.html', {'form': form, 'result': result, 'rumus_stat': rumus})
 
+def akar(request):
+    rumusakar = None
+    if request.method == 'POST':
+        form = AkarForm(request.POST)
+        if form.is_valid():
+            akar = form.cleaned_data['akar']
+            nilai = form.cleaned_data['nilai']
+            hasil = np.power(nilai, 1/akar)
+            rumusakar = 'n^a = n x sebanyak a'
+            return render(request, 'math/hitung.html', {'form': form, 'hasil':hasil, 'rumusnya':rumusakar})
+    else:
+        form = AkarForm()
+
+    return render(request, 'math/hitung.html', {'form': form, 'bentuk': 'akar' })

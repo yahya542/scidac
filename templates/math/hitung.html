@@ -155,8 +155,7 @@
                                 <div class="form-container">
 
 
-                                    <h1 style="font-family: sans-serif; color: black;" class="text-center">Perhitungan
-                                        {{ bentuk }} {{rumus}} </h1> <br><br>
+                                    
                                     <form method="post" class="text-primary">
                                         {% csrf_token %}
                                         {{ form.as_p }}
@@ -186,6 +185,11 @@
                                     <h6 style="color: purple">Standar Deviasi: {{ result.stdev }}</h6>
                                     {% endif %}
                                     {% endif %}
+                                    {% if hasil %}
+                                    <h6 style="color: green">Hasil: {{ hasil }}</h6>
+                                    {% endif %}
+
+
 
 
 
@@ -197,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Bangun Ruang -->
+                
                 <div class="row" style="margin-top: -340px; width: 500px; margin-left: 625px; display: flex;">
                     <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="card shadow mb-5">
@@ -206,8 +210,14 @@
                             </div>
                             <div class="card-body">
                                 <div
-                                    style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 398px;">
-                                    <!-- Konten Bangun Ruang -->
+                                    style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: top; width: 398px; color: slateblue;">
+                                    {% if rumusnya %}
+                                    <h6> {{ rumusnya }} </h6>
+                                    {% endif %}
+                                    {% if rumus_stat %}
+                                    <h6> {{rumus_stat}} </h6>
+                                    {% endif %}
+                                    
                                 </div>
                             </div>
                         </div>

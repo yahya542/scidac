@@ -18,23 +18,23 @@ function generateCalendar() {
     const nextDays = 7 - new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay() - 1;
 
     calendar.innerHTML = '';
-    calendar.innerHTML += `<div class="header">Minggu</div>
-    <div class="header">Senin</div>
-    <div class="header">Selasa</div>
-    <div class="header">Rabu</div>
-    <div class="header">Kamis</div>
-    <div class="header">Jumat</div>
-    <div class="header">Sabtu</div>`;
+    calendar.innerHTML += `<div class="header" style"background-color: #ffcf50;">Minggu</div>
+    <div class="header" style"background-color: #ffcf50;">Senin</div>
+    <div class="header" style"background-color: #ffcf50;">Selasa</div>
+    <div class="header" style"background-color: #ffcf50;">Rabu</div>
+    <div class="header" style"background-color: #ffcf50;">Kamis</div>
+    <div class="header" style"background-color: #ffcf50;">Jumat</div>
+    <div class="header" style"background-color: #ffcf50;">Sabtu</div>`;
 
     for (let x = firstDayIndex; x > 0; x--) {
-        calendar.innerHTML += `<div class="day prev-date">${prevLastDay - x + 1}</div>`;
+        calendar.innerHTML += `<div class="day prev-date" style= "background-color: #f3f3f3;">${prevLastDay - x + 1}</div>`;
     }
 
     for (let i = 1; i <= lastDay; i++) {
         if (i === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear()) {
-            calendar.innerHTML += `<div style=" background-color: slategray;" class="day today">${i}</div>`;
+            calendar.innerHTML += `<div style=" background-color: #ffcf50; border-color: white;" class="day today">${i}</div>`;
         } else {
-            calendar.innerHTML += `<div class="day">${i}</div>`;
+            calendar.innerHTML += `<div class="day" >${i}</div>`;
         }
     }
 

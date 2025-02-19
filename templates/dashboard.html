@@ -14,9 +14,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{% static 'css/kalender.css' %}" rel="stylesheet">
@@ -34,136 +32,6 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul style="background-color: slategray;" class="navbar-nav  sidebar sidebar-dark accordion toggled " id="accordionSidebar" >
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-               <!--  <div class="sidebar-brand-text mx-3">SCIDAC <sup>App</sup></div> -->
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href=" ">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Beranda</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Menu
-            </div>
-            
-            <!-- matematika -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/math-math" >
-                    <img src="{% static 'img/math.svg'%}" alt="school">
-                    <span>Matematika</span>
-                </a>
-                <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div style="background-color: #ADD8E6;" class=" py-2 collapse-inner rounded">
-                        <h6 style="color:red;" class="collapse-header">Dasar:</h6>
-                        <a style="color: #D2B48C;" class="collapse-item" href="/math-geometri">Geometri</a>
-                        <h6 style="color:red;" class="collapse-header">Menengah:</h6>
-                        <a style="color: #D2B48C;" class="collapse-item" href="/math-aljabar">Aljabar</a>
-                        <h6 style="color:red;" class="collapse-header">Tinggi:</h6>
-                        <a style="color: #D2B48C;" class="collapse-item" href="/math-kalkulus">Kalkulus</a>
-                    </div>
-                </div> -->
-            </li>
-
-            <!-- science -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/science-sc">
-                    <img src="{% static 'img/ds.svg'%}" alt="school">
-                    <span>Science</span>
-                </a>
-                
-            </li>
-
-             <!-- religi -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="/religi-rlg" >
-                    <img src="{% static 'img/daily.svg'%}" alt="" srcset="">
-                    <span> islamic</span>
-                </a>
-                
-            </li>
-
-
-            <!-- sekolah -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/school-school" >
-                    <img src="{% static 'img/school-svgrepo-com.svg'%}" alt="school">
-                    <span>School</span>
-                </a>
-                
-            </li>
-
-           
-
-            <!-- daily aktivity -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/dac-dac">
-                    <img src="{% static 'img/daily.svg'%}" alt="" srcset="">
-                    <span>Daily Activity</span>
-                </a>
-               
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/mo-tabungan">
-                    <img src="{% static 'img/dolar.svg'%}" alt="" srcset="">
-                    <span> Keuangan </span>
-                </a>
-               
-            </li>
-           
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Account & Settings
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" > <i class="fas fa-cogs fa-sm fa-fw mr-2 text-light-400"></i>
-                    <span>Settings</span>
-                </a>
-                
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="/akun">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Account</span></a>
-            </li>
-
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-           
-
-
-        </ul>
-        <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -175,18 +43,72 @@
                     class=" topbar navbar navbar-expand navbar-orange   mb-4 static-top shadow">
                     
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                
-
-
+                    
+                    
+                        <a class="nav-link" href=" ">
+                            <i class="fas fa-fw fa-tachometer-alt" style="color: white; text-decoration: none;"></i>
+                            </a>
+                    
+        
+                    <!-- matematika -->
+                    
+                        <a class="nav-link collapsed" href="/math-math" >
+                            <img src="{% static 'img/math.svg'%}" alt="school" style="height: 25px;">
+                           
+                        </a>
+                      
+                 
+        
+                    <!-- science -->
+                    
+                        <a class="nav-link collapsed" href="/science-sc">
+                            <img src="{% static 'img/ds.svg'%}" alt="school" style="height: 25px;">
+                           
+                        </a>
+                        
+                   
+        
+                     <!-- religi -->
+                     
+                        <a class="nav-link collapsed" href="/religi-rlg" >
+                            <img src="{% static 'img/daily.svg'%}" alt="" srcset="" style="height: 25px;">
+                            
+                        </a>
+                        
+                 
+        
+                    <!-- sekolah -->
+                   
+                        <a class="nav-link collapsed" href="/school-school" >
+                            <img src="{% static 'img/school-svgrepo-com.svg'%}" alt="school" style="height: 25px;">
+                            
+                        </a>
+                        
+                   
+        
+                   
+        
+                    <!-- daily aktivity -->
+                   
+                        <a class="nav-link collapsed" href="/dac-dac"  >
+                            <img src="{% static 'img/daily.svg'%}" alt="" srcset="" style="height: 25px;">
+                            
+                        </a>
+                       
+                    
+        
+                    
+                        <a class="nav-link collapsed" href="/mo-tabungan">
+                            <img src="{% static 'img/dolar.svg'%}" alt=""  >
+                           
+                        </a>
+                   
+                   
 
                     <!-- Topbar Search -->
                     <form 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div style="margin-left: 700px; width: 300px;" class="input-group">
+                        <div style="margin-left: 400px; width: 300px;" class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -398,7 +320,7 @@
                             </div>
                         </div>
                         <div class=" col-xl-4 col-lg-5">
-                            <div style="width: 800px;" class="card shadow mb-4">
+                            <div style="width: 850px;" class="card shadow mb-4" style="margin-left: 80px;">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -406,9 +328,9 @@
 
                                 </div>
                                 <!-- Card Body -->
-                                <div style=" height: 360px; width: 700px; line-height: 0.5;" class=" grid-container  ">
+                                <div style=" height: 360px; width: 800px; line-height: 0.5;" class=" grid-container  ">
 
-                                    <div style="color: teal ; margin-top: 20px; margin-left: 50px;" id="monthYear"></div>
+                                    <div style=" margin-top: 20px; margin-left: 50px;" id="monthYear"></div>
                                     <div style="margin-left: -150px; font-weight: 200;" class="calendar">
                                         <div class="header">Minggu</div>
                                         <div class="header">Senin</div>

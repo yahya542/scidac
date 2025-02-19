@@ -22,16 +22,17 @@
     font-size: 5;
     border: 0.5px solid #ccc;
     text-align: center;
-    background-color: teal;
+    
     width: 65;
-    color: black;
+    color: white;
 }
 .day, .hr{
     height: 30px;
 }
-.header { 
-    background-color: #f3f3f3;
+.header {
+    background-color: #ffcf50;
 }
+
 .today { 
     background-color :#ADD8E6 ;
     color:white;

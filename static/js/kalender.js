@@ -18,8 +18,8 @@ function generateCalendar() {
     const nextDays = 7 - new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay() - 1;
 
     calendar.innerHTML = '';
-    calendar.innerHTML += `<div class="header" style"background-color: #ffcf50;">Minggu</div>
-    <div class="header" style"background-color: #ffcf50;">Senin</div>
+    calendar.innerHTML += `<div class="header" style"background-color: slategray;">Minggu</div>
+    <div class="header" style"background-color: slategray;">Senin</div>
     <div class="header" style"background-color: #ffcf50;">Selasa</div>
     <div class="header" style"background-color: #ffcf50;">Rabu</div>
     <div class="header" style"background-color: #ffcf50;">Kamis</div>

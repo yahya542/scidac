@@ -37,7 +37,7 @@ def segitiga(request):
             luas = 0.5 * alas * tinggi
             keliling = sisi_a + sisi_b + sisi_c
           
-            return render(request, 'math/hitung.html', {'form': form, 'luas': luas, 'keliling' : keliling,  'bentuk': 'Segitiga'})
+            return render(request, 'math/hitung.html',  {'form': form, 'luas': luas, 'keliling' : keliling,  'bentuk': 'Segitiga', })
     else:
         form = SegitigaForm()
 

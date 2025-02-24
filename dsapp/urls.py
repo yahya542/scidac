@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path, include
 from myapp.views import dashboard, my_login, signup_view, google, fb, forgot, akun, edit_profile, edit_data, fotoProfile , make_yahya_admin
@@ -50,5 +49,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 

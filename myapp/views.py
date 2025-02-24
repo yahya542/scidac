@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import FormLogin, FotoProfileForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,  update_session_auth_hash
 from django.contrib.auth.models import User
 from .models import Todo, fotoProfile
-from .forms import TodoForm
+from .forms import TodoForm, UbahPasswordForm
 from django.http import HttpResponse
 
 
@@ -43,6 +43,7 @@ def rlg(request) :
     return render (request, 'religi/religi.html')
 
 
+
 # auth 
 def dashboard(request): 
     return render(request, 'dashboard.html', {'user': request.user})
@@ -57,11 +58,12 @@ def google(request):
 def fb(request): 
     return render(request, 'autentikasi/facebook.html')
 def forgot(request): 
-    return render(request, "autentikasi/forgot-password.html")
+    return render(request, "autentikasi/password_reset_form.html")
 def akun(request): 
     return render(request, 'autentikasi/akun.html')
-def ubah(request): 
-    return render (request, 'autentikasi/ubah_sandi.html')
+def setting(request): 
+    return render(request, 'autentikasi/setting.html')
+
 
 def update_profile(request):
     try:
@@ -114,9 +116,54 @@ def delete_todo(request, pk):
     todo.delete()
     return redirect('todo_list')
 
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from .forms import UbahPasswordForm
 
+def ubah_password(request):
+    form = UbahPasswordForm(request.user, request.POST or None)
+    
+    if request.method == "POST":
+        if form.is_valid():
+            # Ambil data form
+            old_password = form.cleaned_data.get('old_password')
+            new_password = form.cleaned_data.get('new_password')
+            confirm_password = form.cleaned_data.get('confirm_password')
 
+            # Verifikasi apakah sandi lama sesuai
+            if not request.user.check_password(old_password):
+                messages.error(request, "Maaf, sandi lama Anda salah.")
+                return render(request, 'autentikasi/ubah_sandi.html', {'form': form})
+            
+            # Verifikasi apakah password baru dan konfirmasi sama
+            if new_password != confirm_password:
+                messages.error(request, "Ubah kata sandi gagal. Konfirmasi password tidak sesuai.")
+                return render(request, 'autentikasi/ubah_sandi.html', {'form': form})
 
+            # Update password baru
+            user = request.user
+            user.set_password(new_password)
+            user.save()
+
+            # Update session agar user tetap login
+            update_session_auth_hash(request, user)
+
+            # Kirim pesan sukses
+            messages.success(request, "Password Anda berhasil diubah. Silakan login kembali.")
+
+            # Redirect ke halaman login
+            return redirect('login')
+
+        else:
+            # Jika form tidak valid, beri pesan error
+            messages.error(request, "Ada kesalahan dalam pengisian form.")
+            return render(request, 'autentikasi/ubah_sandi.html', {'form': form})
+    
+    else:
+        form = UbahPasswordForm(request.user)
+    
+    return render(request, 'autentikasi/ubah_sandi.html', {'form': form})
 
 
 

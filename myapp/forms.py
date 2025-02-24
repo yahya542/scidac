@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User 
 from .models import Todo, fotoProfile
+from django.contrib.auth.forms import PasswordChangeForm
+
 
 
 
@@ -47,8 +49,17 @@ class FormSignUp(forms.Form):
                 raise forms.ValidationError("Password dan konfirmasi password tidak cocok.")
         return cleaned_data
     
+#ubah password 
+class UbahPasswordForm(PasswordChangeForm): 
+    class Meta: 
+        model = User 
+        fields = ['old_password', 'new_password1', 'new_password2' ]
 
-#profile
+
+
+
+
+#profilea
 
 
 class FotoProfileForm(forms.ModelForm):

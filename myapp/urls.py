@@ -1,12 +1,14 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg,  sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, ubah
+from myapp.views import   a,k, rlg,  sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, ubah_password, setting
 
 
 urlpatterns = [
   
    
-    path('-ubah_akun', ubah , name="ubah akun"),
+    path('-ubah_akun', ubah_password , name="ubah akun"),
+    path('-setting', setting , name="setting"),
+
 
     #menengah       
     path('-aljabar', a, name='aljabar'),

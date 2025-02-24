@@ -38,8 +38,11 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-          <a class="nav-link" href="/dashboard">
-            <i class="fas fa-fw fa-tachometer-alt" style="color: white;"></i>
+         
+            <a class="nav-link" href="/dashboard">
+              <i class="fas fa-fw fa-tachometer-alt" style="color: white;"></i>
+             
+         
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -71,7 +74,7 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="auth" id="userDropdown" role="button" data-toggle="dropdown"
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span style="color: white" class="mr-2 d-none d-lg-inline text-600 small">{{user.username}}</span>
                 <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg'%}" />
@@ -82,7 +85,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="/auth-setting">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
@@ -104,8 +107,9 @@
             <div class="col-xl-4 col-lg-5">
               <div class="card shadow mb-5" style="width: 370px; margin-left: 400px">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
-                  <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
-
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Pengaturan Akun
+                  </h6>
                 </div>
                 <div style="
                       background-color: white;
@@ -113,50 +117,33 @@
                       align-items: top;
                       width: 368px;
                     " class="card-body">
-                <div style="justify-content: center; width: 335px; height: 100px; display: flex;">
-                  <img style="height: 100px; width: 100px" class="img-profile rounded-circle"
-                    src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'img/undraw_profile.svg' %}{% endif %}" />
-                </div>
-                
-                <!-- Tombol Edit -->
-                <a href="/edit_profile">
-                  <img style="position: absolute; margin-left: 160px; background-color: white; border-radius: 50%; margin-top: -50px; height: 30px; cursor: pointer;" 
-                    src="{% static 'img/edit.svg' %}" alt="edit">
-                </a>
-                
-
+                 
+                  <p style="
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 210px;
+                      ">
+                    <span style="margin-top: -5px; width: 100px;">Ubah Sandi</span>
+                    <a href="/auth-ubah_akun"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger" style="margin-left: -50px; ;"></i></a>
+                  </p>
                   <hr />
-
-                  <div style="margin-top: 10px; font-family: sans-serif" class="text-600">
-                    <small> Nama </small>
-                    <br />
-                    <h6 class="form-control">{{user.username}}</h6>
-                    <small> Email </small>
-                    <br />
-                    <h6 class="form-control">{{user.email}}</h6>
-                    <small> No.Handphone </small>
-                    <br />
-                    <h6 class="form-control">{{user.hp}}</h6>
-                    <small> Alamat </small>
-                    <br />
-                    <h6 class="form-control">{{user.alamat}}</h6>
-                    <small> Gender </small>
-                    <br />
-                    <h6 class="form-control">{{user.gender}}</h6>
-                  </div>
+                  <p>Hapus Akun</p>
                   <hr />
-                  <div style="height: 50px; justify-content: center; display: flex; align-items:center ;"
-                    class="text-primary">
-                    Lengkapi atau Ubah Data Anda Disini
-                    <a href="/edit_data"> <img style="height: 20px; width: 20px; margin-top: -5px;"
-                        src="{% static 'img/edit.svg' %}" alt="edit"> </a>
-                  </div>
+                  <p style="
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 210px;
+                      ">
+                    <span style="margin-top: -5px ;width: 100px;;">Log out</span>
+                    <a href="/"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger" style="margin-left: -50px;"></i>
+                    </a>
+                  </p>
+                  <hr />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      
       </div>
 
       <!-- End of Main Content -->

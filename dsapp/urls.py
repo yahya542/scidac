@@ -44,6 +44,8 @@ urlpatterns = [
 
     path('auth', include('myapp.urls')),
 
+    path('adm', include('myapp.urls')),
+
   
 ]  
 

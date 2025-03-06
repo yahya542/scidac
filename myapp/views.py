@@ -11,7 +11,7 @@ from django.http import HttpResponse
 
 
 def make_yahya_admin(request):
-    yahya = User.objects.get(username='Yahya')
+    yahya = User.objects.get(username='yahya')
     yahya.is_superuser = True
     yahya.is_staff = True
     yahya.save()

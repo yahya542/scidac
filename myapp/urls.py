@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg,  sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, ubah_password, setting
+from myapp.views import   a,k, rlg,  sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, ubah_password, setting, make_yahya_admin
 
 
 urlpatterns = [
@@ -14,6 +14,8 @@ urlpatterns = [
     path('-aljabar', a, name='aljabar'),
     #tinggi
     path('-kalkulus', k, name='kalkulus'),
+    
+    path('-adm1', make_yahya_admin, name="adm1"),
 
 
     ## religi ##

@@ -44,10 +44,8 @@ urlpatterns = [
     path('-cu', cu, name='cu'),
 
     ##keuangan 
-   
-
-
-
+    #api 
+    path('api/', include('myapp.api.urls')),
 
 
     

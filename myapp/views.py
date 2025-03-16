@@ -6,24 +6,50 @@ from django.contrib.auth.models import User
 from .models import Todo, fotoProfile
 from .forms import TodoForm, UbahPasswordForm
 from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import loginSerializer, RegisterSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+
+
+class RegisterAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = RegisterSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()  # Membuat pengguna baru
+            return Response({'message': 'pengguna berhasil terdaftar!'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
+class loginAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = loginSerializer(data=request.data)
 
+        if serializer.is_valid():
+            # Mendapatkan objek user yang valid
+            user = serializer.validated_data['user']
+            # Membuat RefreshToken dan AccessToken untuk user
+            refresh = RefreshToken.for_user(user)
+
+            # Mengembalikan token access dan refresh dalam response
+            return Response({
+                'username': user.username,
+                'access_token': str(refresh.access_token),  # Token akses
+                'refresh_token': str(refresh),  # Token refresh
+            }, status=status.HTTP_200_OK)
+
+        # Mengembalikan error jika validasi gagal
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
 def make_yahya_admin(request):
     yahya = User.objects.get(username='yahya')
     yahya.is_superuser = True
     yahya.is_staff = True
     yahya.save()
     return HttpResponse("Yahya telah diberikan akses admin.")
-
-
-
-
-
-
-
-
 
 
 #menengah

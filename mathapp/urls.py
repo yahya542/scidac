@@ -18,6 +18,9 @@ urlpatterns = [
     path('-akarpangkat/', akarpangkat, name='akarpangkat'),
     path('-akar/', akar, name='akar'),
 
+    #api
+    
+  
 
 
 ]

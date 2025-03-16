@@ -45,6 +45,7 @@ urlpatterns = [
     path('auth', include('myapp.urls')),
 
     path('adm', include('myapp.urls')),
+    path('api', include('myapp.urls')),
 
   
 ]  

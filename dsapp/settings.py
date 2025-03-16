@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+
     
 ]
 
@@ -164,3 +166,12 @@ AUTHENTICATION_BACKENDS = [
 #waktu 
 TIME_ZONE = 'Asia/Jakarta'
 USE_TZ = True
+
+#jwt
+# settings.py
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}

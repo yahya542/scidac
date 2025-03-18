@@ -1,6 +1,6 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg,  sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, ubah_password, setting, make_yahya_admin, RegisterAPIView, loginAPIView
+from myapp.views import   a,k, rlg,  sc, dac, school, buat, cu, todo_list, add_todo, toggle_complete, delete_todo, ubah_password, setting, make_yahya_admin, RegisterAPIView, loginAPIView, UserAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
@@ -48,11 +48,11 @@ urlpatterns = [
     ##keuangan 
     #api 
   
-    path('/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # Endpoint untuk me-refresh token JWT
-    path('/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('/login', loginAPIView.as_view (), name='login'),
-    path('/register', RegisterAPIView.as_view(), name='register'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('login', loginAPIView.as_view (), name='login'),
+    path('register', RegisterAPIView.as_view(), name='register'), 
+    path('user', UserAPIView.as_view(), name='user'),
 
 
 

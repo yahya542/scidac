@@ -34,9 +34,10 @@ print(os.path.abspath(BASE_DIR))
 SECRET_KEY = 'django-insecure-1vi^sh1il7&%f3&#n6#_s_5no9y#_%+f&$^0c@lvf7ns4ei6@z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.18.51', '192.168.43.62', '0.0.0.0', '127.0.0.1', 'localhost' ,'deya.my.id', '192.168.178.51']
+ALLOWED_HOSTS = []
+
 
 
 
@@ -56,8 +57,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_simplejwt',
-
     
 ]
 
@@ -145,10 +144,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-     BASE_DIR, 'static',
+    BASE_DIR / "static",
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+STATIC_ROOT = BASE_DIR / '/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -166,12 +165,3 @@ AUTHENTICATION_BACKENDS = [
 #waktu 
 TIME_ZONE = 'Asia/Jakarta'
 USE_TZ = True
-
-#jwt
-# settings.py
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-}

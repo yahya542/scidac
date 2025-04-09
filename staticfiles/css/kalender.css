@@ -1,0 +1,39 @@
+.calendar {
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1em;
+    margin: 2em 0;
+    width: 50px;
+    
+    
+} 
+.day{ 
+    padding: 0.5em;
+    font-size: 5;
+    border: 0.5px solid slategrey;
+    text-align: center;
+    background:#ADD8E6 ;
+    width: 65;
+    color: black;
+
+}
+.header {
+    padding: 0.5em;
+    font-size: 5;
+    border: 0.5px solid #ccc;
+    text-align: center;
+    
+    width: 65;
+    color: white;
+}
+.day, .hr{
+    height: 30px;
+}
+.header {
+    background-color:slategray;
+}
+
+.today { 
+    background-color :#ADD8E6 ;
+    color:white;
+}

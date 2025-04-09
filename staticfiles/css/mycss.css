@@ -1,0 +1,28 @@
+/* Sidebar default (sembunyi) */
+#accordionSidebar { 
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Sidebar disembunyikan pada awalnya */
+    background-color: slategray;
+    transition: 0.3s;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Sidebar dengan kelas 'toggled', muncul dari kiri */
+#accordionSidebar.toggled {
+    left: 0;  /* Sidebar muncul dari kiri */
+}
+
+/* Responsif untuk tampilan mobile */
+@media (max-width: 768px) {
+    #accordionSidebar {
+        left: -250px;  /* Sidebar tetap disembunyikan pada tampilan mobile */
+    }
+
+    #accordionSidebar.toggled {
+        left: 0;  /* Sidebar muncul saat tombol diklik */
+    }
+}

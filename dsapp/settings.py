@@ -164,4 +164,4 @@ AUTHENTICATION_BACKENDS = [
 
 #waktu 
 TIME_ZONE = 'Asia/Jakarta'
-USE_TZ = True
+USE_TZ = True 

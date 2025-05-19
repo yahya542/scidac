@@ -85,6 +85,16 @@ class TodoForm(forms.ModelForm):
 
     
 
-
+ #biodata
+class BiodataForm(forms.ModelForm):
+    class Meta:
+        
+        fields = ['nama_lengkap', 'alamat', 'gender', 'hp']
+        widgets = {
+            'nama_lengkap': forms.TextInput(attrs={'class': 'form-control'}),
+            'alamat': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'gender': forms.Select(attrs={'class': 'form-control'}),
+            'hp': forms.TextInput(attrs={'class': 'form-control'}),
+        } 
 
     

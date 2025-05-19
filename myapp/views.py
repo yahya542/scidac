@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import FormLogin, FotoProfileForm
+from .forms import FormLogin, FotoProfileForm, FormSignUp
 from django.contrib.auth import login, authenticate,  update_session_auth_hash
 from django.contrib.auth.models import User
-from .models import Todo, fotoProfile
+from .models import Todo, fotoProfile, Profile
 from .forms import TodoForm, UbahPasswordForm
 from django.http import HttpResponse
 from rest_framework.views import APIView
@@ -87,7 +87,13 @@ def rlg(request) :
 
 # auth 
 def dashboard(request): 
-    return render(request, 'dashboard.html', {'user': request.user})
+    profile = None
+    if hasattr(request.user, 'profile'):
+        profile = request.user.profile
+
+    return render(request, 'dashboard.html', {'profile': profile})
+
+    
 def register(request): 
      return render(request, 'register.html' )
 def submit_data(request): 
@@ -246,8 +252,8 @@ def my_login(request):
 
     return render(request,  'autentikasi/login.html', {'form':form})
 
-from django.shortcuts import render, redirect
-from .forms import FormSignUp
+
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -270,7 +276,15 @@ def edit_profile (request) :
 
 #edit akun 
 def edit_data (request) : 
-    return render (request, 'autentikasi/edit_data.html')
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    # Buat profile jika belum ada
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        ...
+    return render (request, 'autentikasi/edit_data.html', {'profile': profile})
 
 #keuangan 
 

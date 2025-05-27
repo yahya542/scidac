@@ -28,4 +28,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return f" {self.user.username }'s profile"
+def get_or_create_profile(self):
+    profile, created = Profile.objects.get_or_create(user=self)
+    return profile
+
+User.add_to_class('safe_profile', property(get_or_create_profile))
 

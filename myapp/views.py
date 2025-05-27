@@ -87,10 +87,7 @@ def rlg(request) :
 
 # auth 
 def dashboard(request): 
-    profile = None
-    if hasattr(request.user, 'profile'):
-        profile = request.user.profile
-
+    profile = request.user.safe_profile
     return render(request, 'dashboard.html', {'profile': profile})
 
     

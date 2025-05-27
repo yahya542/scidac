@@ -11,6 +11,7 @@ def geometri(request) :
     return render (request, 'math/dasar/geometri.html' )
 def akarpangkat(request) : 
     return render (request, 'math/menengah/akarpangkat.html' )
+
 #bangun datar
 def persegi(request):
     if request.method == 'POST':

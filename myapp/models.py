@@ -20,6 +20,7 @@ class Profile(models.Model):
     alamat = models.TextField(blank=True, null=True)
     gender = models.CharField(max_length=10, choices=(('Laki-laki', 'Laki-laki'), ('Perempuan', 'Perempuan')), blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', default='profile_pictures/default.jpg')
+    nama_lengkap = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f" {self.user.username }'s profile"

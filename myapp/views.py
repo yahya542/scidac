@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import FormLogin, FotoProfileForm, FormSignUp
+from .forms import FormLogin, FotoProfileForm, FormSignUp, BiodataForm
 from django.contrib.auth import login, authenticate,  update_session_auth_hash
 from django.contrib.auth.models import User
 from .models import Todo,  Profile
@@ -108,7 +108,7 @@ def akun(request):
 def setting(request): 
     return render(request, 'autentikasi/setting.html')
 
-
+#edit profile
 def update_profile_picture(request):
     profile = request.user.profile
     if request.method == 'POST':
@@ -119,7 +119,34 @@ def update_profile_picture(request):
     else:
         form = FotoProfileForm(instance=profile)
 
-    return render(request, 'update_profile.html', {'form': form})
+    return render(request, 'update_profile.html', {'form': form}
+                  
+                  )
+
+def edit_data(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    # Buat profile jika belum ada
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = BiodataForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('akun')  # ganti dengan nama url yang sesuai
+    else:
+        form = BiodataForm(instance=profile)
+
+    return render(request, 'autentikasi/edit_data.html', {
+        'form': form,
+        'form_email': request.user.email,
+        'profile': profile,
+    })
+
+
+
+
 
 #dac 
 def dac(request): 
@@ -267,18 +294,8 @@ def edit_profile (request) :
     return render (request, 'autentikasi/edit_profil.html')
 
 #edit akun 
-def edit_data (request) : 
-    if not request.user.is_authenticated:
-        return redirect('login')
 
-    # Buat profile jika belum ada
-    profile, created = Profile.objects.get_or_create(user=request.user)
 
-    if request.method == 'POST':
-        ...
-    return render (request, 'autentikasi/edit_data.html', {'profile': profile})
-
-#keuangan 
 
 
 

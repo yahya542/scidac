@@ -59,15 +59,7 @@ class UbahPasswordForm(PasswordChangeForm):
 
 
 
-#fotoprofile
 
-
-class FotoProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile  
-        fields = ['profile_picture'] 
-        
-   
 
 
 
@@ -82,13 +74,18 @@ class TodoForm(forms.ModelForm):
             'task': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tulis tugas baru...'}),
         }
 
+#fotoprofile
 
-    
 
- #biodata
+class FotoProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile  
+        fields = ['profile_picture'] 
+        
+#biodata
 class BiodataForm(forms.ModelForm):
     class Meta:
-        
+        model = Profile
         fields = ['nama_lengkap', 'alamat', 'gender', 'hp']
         widgets = {
             'nama_lengkap': forms.TextInput(attrs={'class': 'form-control'}),

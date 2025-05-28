@@ -109,20 +109,22 @@ def setting(request):
     return render(request, 'autentikasi/setting.html')
 
 #edit profile
-def update_profile_picture(request):
-    profile = request.user.profile
+def edit_profile(request):
+    profile = request.user.profile  # pastikan profile sudah ada, pakai get_or_create jika perlu
     if request.method == 'POST':
         form = FotoProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            messages.success(request, 'Foto profil berhasil diperbarui.')
+            return redirect('dashboard')  # atau halaman lain yang diinginkan
+        else:
+            messages.error(request, 'Gagal menyimpan foto profil.')
     else:
         form = FotoProfileForm(instance=profile)
 
-    return render(request, 'update_profile.html', {'form': form}
-                  
-                  )
+    return render(request, 'autentikasi/edit_profil.html', {'form': form})
 
+#edit akun 
 def edit_data(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -290,10 +292,7 @@ def signup_view(request):
     return render(request, 'autentikasi/register.html', {'form': form})
 
 #edit-profile
-def edit_profile (request) : 
-    return render (request, 'autentikasi/edit_profil.html')
 
-#edit akun 
 
 
 

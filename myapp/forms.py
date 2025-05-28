@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
-from .models import Todo, fotoProfile
+from .models import Todo, Profile
 from django.contrib.auth.forms import PasswordChangeForm
 
 
@@ -59,14 +59,14 @@ class UbahPasswordForm(PasswordChangeForm):
 
 
 
-#profilea
+#fotoprofile
 
 
 class FotoProfileForm(forms.ModelForm):
     class Meta:
-        model = fotoProfile  
-        fields = ['gambar_profile'] 
-        gambar_profile = forms.ImageField(required=True)
+        model = Profile  
+        fields = ['profile_picture'] 
+        
    
 
 

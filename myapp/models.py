@@ -12,12 +12,7 @@ class Todo(models.Model):
         return self.task
 
 
-class fotoProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    gambar_profile = models.ImageField(null=True, blank=True, upload_to='profile_pics/')
 
-    def __str__(self):
-        return  f"Foto Profil {self.user.username}"
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

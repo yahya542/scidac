@@ -3,7 +3,7 @@ from django.contrib import messages
 from .forms import FormLogin, FotoProfileForm, FormSignUp
 from django.contrib.auth import login, authenticate,  update_session_auth_hash
 from django.contrib.auth.models import User
-from .models import Todo, fotoProfile, Profile
+from .models import Todo,  Profile
 from .forms import TodoForm, UbahPasswordForm
 from django.http import HttpResponse
 from rest_framework.views import APIView
@@ -109,22 +109,17 @@ def setting(request):
     return render(request, 'autentikasi/setting.html')
 
 
-def update_profile(request):
-    try:
-        foto_profile = fotoProfile.objects.get(user=request.user)
-    except fotoProfile.DoesNotExist:
-        foto_profile = None
-
+def update_profile_picture(request):
+    profile = request.user.profile
     if request.method == 'POST':
-        form = FotoProfileForm(request.POST, request.FILES, instance=foto_profile)
+        form = FotoProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')  # Redirect ke halaman profil setelah upload
+            return redirect('dashboard')
     else:
-        form = FotoProfileForm(instance=foto_profile)
+        form = FotoProfileForm(instance=profile)
 
-    return render(request, 'autentikasi/akun.html', {'form': form})
-
+    return render(request, 'update_profile.html', {'form': form})
 
 #dac 
 def dac(request): 

@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'islamicapp', 
     'scdailyapp', 
     'scienceapp',
-    'mathapp',
+    'study',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

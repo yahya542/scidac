@@ -22,7 +22,7 @@ urlpatterns = [
 
 
     ##math
-    path('math', include('study.urls')),
+    path('study/', include('study.urls')),
 
     ##religi
     path('religi', include('myapp.urls')),

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm, statForm, AkarForm
+from ..forms import PersegiForm, SegitigaForm, PpanjangForm , LingkaranForm, BketupatForm, kubusForm, statForm, AkarForm
 import numpy as np
 
 # Create your views here.

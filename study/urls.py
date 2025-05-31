@@ -1,6 +1,6 @@
 from django.urls import path
 from study.views.views import  persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus,math, stat, akarpangkat, akar
-from study.views.session_view import StudySessionListCreateView
+from study.views.session_view import StudySessionListCreateView, StudySessionDetailView
 urlpatterns = [
       ## math ##
     path('-math', math, name='math' ),
@@ -20,7 +20,7 @@ urlpatterns = [
 
     #api
     path('sessions/', StudySessionListCreateView.as_view(), name='study-session-list-create'),
-    
+    path('sessions/<int:pk>/', StudySessionDetailView.as_view(), name='study-session-detail'),
   
 
 

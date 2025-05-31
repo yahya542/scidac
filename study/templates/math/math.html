@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Math - Geometri</title>
+    <title>Math - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -30,6 +30,9 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        
+
+        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -38,21 +41,20 @@
                 <!-- Topbar -->
                 <nav style="background-color:#ADD8E6;"
                     class="navbar navbar-expand navbar bg topbar mb-4 static-top shadow">
-
+                    
                     <a class="nav-link" href="dashboard">
                         <i class="fas fa-fw fa-tachometer-alt" style="color: white; text-decoration: none;"></i>
-                    </a>
-                    <a class="nav-link" href="/math-math">
+                        </a>
+                           
+                    <a class="nav-link" href="/study">
                         <i> <img src="{% static 'img/back.svg' %}" alt="back"></i>
-                       
+
                     </a>
-
-
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" >
 
-
+                       
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
@@ -60,7 +62,6 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                            
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
@@ -73,7 +74,6 @@
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
-                                            
                                         </div>
                                     </div>
                                 </form>
@@ -117,80 +117,84 @@
                     </ul>
 
                 </nav>
-
                 <!-- End of Topbar -->
 
+
+
                 <div class="row">
-                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
-                        <div class="card shadow mb-5">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Bangun Datar</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-container">
-                                    <button class="btn btn-info"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="{% url 'persegi' %}">
-                                            Persegi</a></button>
-                                    <button class="btn btn-warning"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="{% url 'segitiga' %}">
-                                            Segitiga</a></button>
-                                    <button class="btn btn-primary"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="{% url 'Ppanjang' %}">
-                                            Persegi Panjang</a></button>
-                                    <button class="btn btn-danger"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="{% url 'Lingkaran' %}">
-                                            Lingkaran</a></button>
-                                    <button class="btn btn-success"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="{% url 'Bketupat' %}">
-                                            Belah ketupat</a></button>
-                                    <button class="btn btn-dark"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="#">
-                                            Layang-layang</a></button>
-                                    <button class="btn btn-dark"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="#">
-                                            Trapesium</a></button>
-                                    <button class="btn btn-dark"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="#">
-                                            Jajar Genjang</a></button>
 
-                                </div>
+                    <!-- Card 2 (contoh lain) -->
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-5" style="width: 370px; margin-left: 10px;">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
+                                <h6  class="m-0 font-weight-bold text-primary ">Dasar</h6>
+                            </div>
+                            <div style=" margin-top: 0; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
+                                class="card-body">
+                                <!-- Link lain dalam card-body -->
+                                <a href="/study/geometri"  class="btn btn"
+                                    style="text-decoration: none; color: white; font-size: 1.25rem; padding: 10px 20px;margin-top: 0; margin-left: -20px; width: 300px; background-color:#ADD8E6;" >
+                                    Geometri
+                                </a>
+                                
+                            </div>
+                            <div style=" margin-top: 0; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
+                                class="card-body">
+                                <!-- Link lain dalam card-body -->
+                                <a href="/study/stat"  class="btn btn-warning"
+                                    style="text-decoration: none; color: white; font-size: 1.25rem; padding: 10px 20px;margin-top: -30px; margin-left: -20px; width: 300px; background-color: #ffcf50;;">
+                                    Statistika Dasar
+                                </a>
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-5" style="width: 370px; margin-left: 10px;">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Menengah</h6>
+                            </div>
+                            <div style="background-color: white; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
+                                class="card-body">
+                                <div style=" margin-top: 0; height: auto; display: flex; justify-content: center; align-items: center; width: 368px;"
+                                class="card-body">
+                                <!-- Link lain dalam card-body -->
+                                <a href="/math/akarpangkat"  class="btn btn"
+                                    style="text-decoration: none; color: white; font-size: 1.25rem; padding: 10px 20px;margin-top: 0; margin-left: -20px; width: 300px; background-color: #ADD8E6;">
+                                    Akar & Pangkat
+                                </a>
+                                
+                            </div>
+                                
                             </div>
                         </div>
                     </div>
-
-                    <!-- Bangun Ruang -->
-                    <div class="col-xl-11 col-lg-12 col-md-12" style="margin-left: 50px;">
-                        <div class="card shadow mb-5">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Bangun Ruang</h6>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-5" style="width: 370px; margin-left: 10px;">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Tinggi</h6>
                             </div>
-                            <div class="card-body">
-                                <div class="form-container">
-                                    <button class="btn btn-info"> <a style="color: aliceblue; text-decoration: none;"
-                                            href="{% url 'kubus'%}">
-                                            Kubus</a></button>
-                                    <button class="btn btn-dark">
-                                        Balok</button>
-                                    <button class="btn btn-dark">
-                                        tabung</button>
-                                    <button class="btn btn-dark">
-                                        kerucut</button>
-                                    <button class="btn btn-dark">
-                                        Limas</button>
-                                    <button class="btn btn-dark">
-                                        Prisma</button>
-                                    <button class="btn btn-dark">
-                                        Bola</button>
-                                    <button class="btn btn-dark">
-                                        Silinder</button>
-
-                                </div>
+                            <div style="background-color: white; height: 360px; display: flex; justify-content: center; align-items: center; width: 368px;"
+                                class="card-body">
+                                <!-- Link lain dalam card-body -->
+                            dalam proses🙏
                             </div>
                         </div>
                     </div>
-
+                  
                 </div>
+               
+
+
+
+
+
+
             </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -202,9 +206,13 @@
                     </div>
                 </div>
             </footer>
-        </div>
-    </div>
+            <!-- End of Footer -->
 
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

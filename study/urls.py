@@ -1,27 +1,31 @@
 from django.urls import path
-from study.views.views import  persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus,math, stat, akarpangkat, akar
+from study.views.math_view import persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus, math, stat, akarpangkat, akar, study
 from study.views.session_view import StudySessionListCreateView, StudySessionDetailView
+
 urlpatterns = [
-      ## math ##
-    path('-math', math, name='math' ),
-    #Dasar
-    #geometri
-    path('-geometri', geometri, name='geometri'),
+    # study
+    path('', study, name='study'),
+
+    #capsule 
+
+
+    #tree
+
+
+    # math
+    path('math/', math, name='math'),
+    path('geometri/', geometri, name='geometri'),
     path('persegi/', persegi, name='persegi'),
     path('segitiga/', segitiga, name='segitiga'),
     path('Ppanjang/', Ppanjang, name='Ppanjang'),
     path('Lingkaran/', Lingkaran, name='Lingkaran'),
     path('Bketupat/', Bketupat, name='Bketupat'),
     path('kubus/', kubus, name='kubus'),
-    #stat
-    path('-stat/', stat, name='stat'),
-    path('-akarpangkat/', akarpangkat, name='akarpangkat'),
-    path('-akar/', akar, name='akar'),
+    path('stat/', stat, name='stat'),
+    path('akarpangkat/', akarpangkat, name='akarpangkat'),
+    path('akar/', akar, name='akar'),
 
-    #api
+    # api sessions
     path('sessions/', StudySessionListCreateView.as_view(), name='study-session-list-create'),
     path('sessions/<int:pk>/', StudySessionDetailView.as_view(), name='study-session-detail'),
-  
-
-
 ]

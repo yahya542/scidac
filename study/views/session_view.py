@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-from study.models import StudySession
+from study.models.capsule_models import StudySession
 from study.serializer.session_serializer import StudySessionSerializer
 
 

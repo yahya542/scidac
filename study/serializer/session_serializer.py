@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from study.models import StudySession
+from study.models.capsule_models import StudySession
 
 
 class StudySessionSerializer(serializers.ModelSerializer):

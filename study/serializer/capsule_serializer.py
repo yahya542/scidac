@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from study.capsule_models import StudyCapsule
+from study.models.capsule_models import StudyCapsule
 
 
 class StudyCapsuleSerializer(serializers.ModelSerializer):

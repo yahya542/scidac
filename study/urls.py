@@ -9,7 +9,7 @@ urlpatterns = [
 
     #capsule 
     path('capsule/', capsule, name='capsule'),
-    path('capsule/',ListCreateView.as_view(), name='capsule-list-create'), 
+    path('capsule/lcv',ListCreateView.as_view(), name='capsule-list-create'), 
     path('capsule/<int:pk>/', DetailView.as_view(), name='capsule-detail'),  # detail capsule
 
     #tree

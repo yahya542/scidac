@@ -1,7 +1,7 @@
 from django.urls import path
 from study.views.math_view import persegi, segitiga, geometri, Ppanjang, Lingkaran, Bketupat, kubus, math, stat, akarpangkat, akar, study
 from study.views.session_view import StudySessionListCreateView, StudySessionDetailView
-from study.views.capsule_view import capsule
+from study.views.capsule_view import capsule, ListCreateView, DetailView
 
 urlpatterns = [
     # study
@@ -9,6 +9,8 @@ urlpatterns = [
 
     #capsule 
     path('capsule/', capsule, name='capsule'),
+    path('capsule/',ListCreateView.as_view(), name='capsule-list-create'), 
+    path('capsule/<int:pk>/', DetailView.as_view(), name='capsule-detail'),  # detail capsule
 
     #tree
 

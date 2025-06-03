@@ -1,22 +1,78 @@
-# study/ai_utils.py
-import openai
+import requests
+import json
+from rapidfuzz import fuzz
 
-openai.api_key = 'API_KEY_MU'  # ganti dengan API key asli
+def ai_response(topic):
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": "Bearer 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",  # Ganti dengan API key kamu
+        "Content-Type": "application/json",
+        "HTTP-Referer": "http://localhost:8000",  
+        "X-Title": "SCIDAC",  
+    }
+    data = {
+        "model": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+        "messages": [
+            {
+                "role": "user",
+                "content": f"Buatkan satu pertanyaan dan jawaban tentang topik: {topic} tapi pertanyaannya tingkat mudah saja jangan yang sulit. Format jawabanmu harus seperti:\nPertanyaan: ...\nJawaban: ..."
 
-def generate_question(topic):
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo",
-        prompt=f"Buatkan satu pertanyaan pilihan ganda tentang topik: {topic}. Sertakan jawabannya. Format: Pertanyaan - Jawaban",
-        max_tokens=100
-    )
-    text = response.choices[0].text.strip()
+            }
+        ]
+    }
 
-    if "Jawaban:" in text:
-        parts = text.split("Jawaban:")
-        question = parts[0].replace("Pertanyaan:", "").strip()
-        answer = parts[1].strip()
-    else:
-        question = text
-        answer = "Tidak ditemukan"
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    response.raise_for_status()
+
+    result = response.json()
+    message = result["choices"][0]["message"]["content"]
+
+    
+    lines = message.split("\n")
+    question = ""
+    answer = ""
+
+    for line in lines:
+        if "Pertanyaan:" in line:
+            question = line.replace("Pertanyaan:", "").strip()
+        elif "Jawaban:" in line:
+            answer = line.replace("Jawaban:", "").strip()
+
+   
+    if not question or not answer:
+        question, answer = message.strip().split("?")
+        question += "?"
+        answer = answer.strip()
 
     return question, answer
+
+def check_answer(user_answer, correct_answer, question):
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": "Bearer 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", 
+        "Content-Type": "application/json",
+        "HTTP-Referer": "http://localhost:8000",
+        "X-Title": "SCIDAC",
+    }
+    prompt = f"""
+    Pertanyaan: {question}
+    Jawaban Pengguna: {user_answer}
+    Jawaban Benar: {correct_answer}
+
+    Apakah jawaban pengguna sudah benar? Jika benar, jawab 'benar' saja. Jika salah, jawab 'salah' dan berikan koreksi.
+    """
+
+    data = {
+        "model": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+        "messages": [{"role": "user", "content": prompt}]
+    }
+
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    response.raise_for_status()
+    result = response.json()
+    message = result["choices"][0]["message"]["content"].strip().lower()
+
+    if "benar" in message and "salah" not in message:
+        return True, "Jawaban kamu benar!"
+    else:
+        return False, message 

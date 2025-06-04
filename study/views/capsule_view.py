@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.utils import timezone
 from datetime import timedelta
+from django.shortcuts import get_object_or_404
+from myapp.models import Profile
 
 
 
@@ -47,6 +49,7 @@ class DetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Endpoint: Check Answer
+# Endpoint: Check Answer
 class CapsuleAnswerAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = CapsuleAnswerSerializer
@@ -64,16 +67,23 @@ class CapsuleAnswerAPIView(APIView):
         # Cek ke AI
         is_correct, feedback = check_answer(user_answer, capsule.correct_answer, capsule.question)
 
-
         capsule.user_answer = user_answer
         capsule.is_correct = is_correct
         if is_correct:
             capsule.unlock_next_at = timezone.now() + timedelta(days=1)
+
+            profile, created = Profile.objects.get_or_create(user=request.user)
+            profile.points += 10
+            profile.save()
+
         capsule.save()
+
+        profile = Profile.objects.get(user=request.user)
 
         return Response({
             "question": capsule.question,
             "your_answer": user_answer,
             "correct": is_correct,
-            "feedback": feedback
+            "feedback": feedback,
+            "current_points": profile.points
         }, status=200)

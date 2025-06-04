@@ -5,7 +5,7 @@ from rapidfuzz import fuzz
 def ai_response(topic):
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
-        "Authorization": "Bearer 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",  # Ganti dengan API key kamu
+        "Authorization": "Bearer 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",  # Ganti dengan API key kamu
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost:8000",  
         "X-Title": "SCIDAC",  
@@ -49,7 +49,7 @@ def ai_response(topic):
 def check_answer(user_answer, correct_answer, question):
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
-        "Authorization": "Bearer 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", 
+        "Authorization": "Bearer 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", 
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost:8000",
         "X-Title": "SCIDAC",

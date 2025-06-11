@@ -1,0 +1,12 @@
+LOAD DATABASE
+     FROM mysql://pgloaderuser:Deya2501@localhost/scidacapp
+     INTO postgresql://postgres:deya2501@localhost/scidacapp_pg
+
+ WITH include no drop,
+      create tables,
+      create indexes,
+      reset sequences,
+      foreign keys
+
+SET work_mem to '16MB',
+    maintenance_work_mem to '512 MB';

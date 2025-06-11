@@ -1,1 +1,1 @@
-web: gunicorn studora.wsgi
+web: gunicorn dsapp.wsgi

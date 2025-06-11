@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os 
+from dotenv import load_dotenv
+import dj_database_url
+
+load_dotenv()
+
 
 
 
@@ -31,12 +36,12 @@ print(os.path.abspath(BASE_DIR))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1vi^sh1il7&%f3&#n6#_s_5no9y#_%+f&$^0c@lvf7ns4ei6@z'
+SECRET_KEY = os.getenv('django-insecure-1vi^sh1il7&%f3&#n6#_s_5no9y#_%+f&$^0c@lvf7ns4ei6@z')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['localhost', '192.168.1.142', '192.168.185.51']
+ALLOWED_HOSTS =  os.getenv("ALLOWED_HOSTS", "", 'localhost', '192.168.1.142', '192.168.185.51').split(",")
 
 
 

@@ -21,31 +21,12 @@ urlpatterns = [
 
 
 
-    ##math
-    path('study/', include('study.urls')),
-
-    ##religi
-    path('religi', include('myapp.urls')),
-
-    ##religi
-    path('science', include('myapp.urls')),
-
-    ##school
-    path('school', include('myapp.urls')),
-
-    ##dac
-    path('dac', include('myapp.urls')),
-
-    #contact
-    path('cu', include('myapp.urls')),
-
-    #keuangan 
-    path('mo', include('tabunganapp.urls')),
-
+    path('capsule/', include('capsule.urls')),
     path('auth', include('myapp.urls')),
-
     path('adm', include('myapp.urls')),
     path('api/', include('myapp.urls')),
+    path('formula/', include('formula.urls')),
+  
 
   
 ]  

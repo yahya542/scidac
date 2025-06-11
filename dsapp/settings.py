@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-1vi^sh1il7&%f3&#n6#_s_5no9y#_%+f&$^0c@lvf7ns4ei6@z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '192.168.1.142', '192.168.185.51']
 
 
 
@@ -45,11 +45,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'myapp',
-    'tabunganapp',
-    'islamicapp', 
-    'scdailyapp', 
-    'scienceapp',
-    'study',
+    'capsule',
+    'tree',
+    'formula',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,17 +56,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+   
+
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'dsapp.urls'
@@ -166,4 +170,12 @@ AUTHENTICATION_BACKENDS = [
 TIME_ZONE = 'Asia/Jakarta'
 USE_TZ = True 
 
-OPENROUTER_API_KEY = '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'
+OPENROUTER_API_KEY = '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'
+CORS_ALLOW_ALL_ORIGINS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+  
+}

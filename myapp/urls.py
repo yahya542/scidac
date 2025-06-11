@@ -1,7 +1,8 @@
 
 from django.urls import path
-from myapp.views import   a,k, rlg,  sc,  ubah_password, setting, make_yahya_admin, RegisterAPIView, loginAPIView, UserAPIView
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from myapp.views import   a,k,   ubah_password, setting, make_yahya_admin, RegisterAPIView, loginAPIView, UserAPIView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView 
+
 
 
 
@@ -20,15 +21,7 @@ urlpatterns = [
     path('-adm1', make_yahya_admin, name="adm1"),
 
 
-    ## religi ##
-    #dashboard 
-    path('-rlg', rlg, name='religi'),
-
-
-    ###science 
-    #dashboard 
-    path('-sc', sc , name='science' ),
-
+    
  
     #api 
   

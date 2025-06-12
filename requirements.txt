@@ -50,3 +50,4 @@ typing_extensions==4.12.2
 urllib3==2.0.7
 virtualenv==20.26.2
 wheel==0.44.0
+psycopg2-binary

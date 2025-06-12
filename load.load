@@ -1,5 +1,5 @@
 LOAD DATABASE
-     FROM mysql://pgloaderuser:Deya2501@localhost/scidacapp
+     FROM mysql://pgloaderuser:Deya2501_@localhost/scidacapp
      INTO postgresql://postgres:deya2501@localhost/scidacapp_pg
 
  WITH include no drop,
@@ -10,3 +10,5 @@ LOAD DATABASE
 
 SET work_mem to '16MB',
     maintenance_work_mem to '512 MB';
+
+

@@ -36,12 +36,23 @@ print(os.path.abspath(BASE_DIR))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('django-insecure-1vi^sh1il7&%f3&#n6#_s_5no9y#_%+f&$^0c@lvf7ns4ei6@z')
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-1vi^sh1il7&%f3&#n6#_s_5no9y#_%+f&$^0c@lvf7ns4ei6@z')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS =  os.getenv("ALLOWED_HOSTS", "", 'localhost', '192.168.1.142', '192.168.185.51').split(",")
+
+ALLOWED_HOSTS = ['*'] 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
+
+
+
 
 
 
@@ -102,18 +113,18 @@ WSGI_APPLICATION = 'dsapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-DATABASES = {
+""" DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'scidacapp',
-        'USER': "scidac",
-        'PASSWORD': "Scidac_123",
-        "HOST" : "localhost",
-        "PORT" : '3306'
-
-
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'scidacapp_pg',
+        'USER': 'postgres',
+        'PASSWORD': 'deya2501',
+        'HOST': 'localhost',
+        'PORT': '5432', 
     }
-}
+} """
+
+
 
 
 # Password validation

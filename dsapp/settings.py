@@ -15,7 +15,7 @@ import os
 from dotenv import load_dotenv
 import dj_database_url
 
-load_dotenv()
+
 
 
 
@@ -43,13 +43,33 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
 ALLOWED_HOSTS = ['*'] 
+
+
+
+load_dotenv()
+
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('PGHOST'),
+        'PORT': os.environ.get('PGPORT'),
+    }
+}
+
+
+
+
+
+"""  DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True
     )
-}
+}  """
 
 
 
